@@ -18,14 +18,13 @@ function background() {
       url: 'url("img/kelly-sikkema-455242.jpg")',
       // photographer: ,
       // photographerURL:
-    }
-  ]
+    },
+  ];
 
   // Select random number for bg album
   let currentBg = getRandom(backgroundAlbum.length);
 
   // Insert background image into DOM
   backgroundImage.style.backgroundImage = backgroundAlbum[currentBg].url;
-
 }
 background();
