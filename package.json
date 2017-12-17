@@ -20,7 +20,8 @@
     "prettier": "^1.9.2"
   },
   "scripts": {
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "prettier": "prettier"
   },
   "lint-staged": {
     "*.{js,json,css}": ["prettier --write", "git add"]
