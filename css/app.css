@@ -1,7 +1,16 @@
-body {
+body, html {
+  margin: 0;
+}
 
+h1 {
+  margin: 0;
 }
 
 .background {
   background-color: #333;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  width: 100vw;
+  height: 100vh;
 }
