@@ -1,0 +1,29 @@
+{
+  "name": "poka",
+  "version": "0.0.1",
+  "description":
+    "Pomodoro meets Kanban, for individual and team task management",
+  "main": "index.js",
+  "repository": "git@github.com:chingu-voyage3/bears-32.git",
+  "author": "chiptus@gmail.com",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^4.13.1",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-config-standard": "^11.0.0-beta.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-node": "^5.2.1",
+    "eslint-plugin-promise": "^3.6.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "husky": "^0.14.3",
+    "lint-staged": "^6.0.0",
+    "prettier": "^1.9.2"
+  },
+  "scripts": {
+    "precommit": "lint-staged",
+    "prettier": "prettier"
+  },
+  "lint-staged": {
+    "*.{js,json,css}": ["prettier --write", "git add"]
+  }
+}

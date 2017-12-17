@@ -3,3 +3,7 @@ js/config.js
 
 # DS Store
 .DS_Store
+
+
+node_modules/
+build/
