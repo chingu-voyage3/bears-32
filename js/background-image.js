@@ -1,4 +1,4 @@
-function background() {
+(function background() {
   'use strict';
 
   // Still deliberating on whether to use the Unsplash API, or just download
@@ -21,11 +21,10 @@ function background() {
     }
   ]
 
-  // Select random number for bg album
+  // Select random number for bg album array
   let currentBg = getRandom(backgroundAlbum.length);
 
   // Insert background image into DOM
   backgroundImage.style.backgroundImage = backgroundAlbum[currentBg].url;
 
-}
-background();
+})();
