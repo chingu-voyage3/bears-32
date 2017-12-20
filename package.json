@@ -1,7 +1,8 @@
 {
-  "name": "pomodoro",
-  "version": "1.0.0",
-  "description": "",
+  "name": "poka",
+  "version": "0.0.1",
+  "description":
+    "Pomodoro meets Kanban, for individual and team task management",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,14 +11,30 @@
     "type": "git",
     "url": "git+https://github.com/chingu-voyage3/bears-32.git"
   },
-  "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/chingu-voyage3/bears-32/issues"
   },
   "homepage": "https://github.com/chingu-voyage3/bears-32#readme",
   "devDependencies": {
+    "eslint": "^4.13.1",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-config-standard": "^11.0.0-beta.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-node": "^5.2.1",
+    "eslint-plugin-promise": "^3.6.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "husky": "^0.14.3",
+    "lint-staged": "^6.0.0",
+    "prettier": "^1.9.2",
     "webpack": "^3.10.0"
+  },
+  "scripts": {
+    "precommit": "lint-staged",
+    "prettier": "prettier"
+  },
+  "lint-staged": {
+    "*.{js,json,css}": ["prettier --write", "git add"]
   }
 }
