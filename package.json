@@ -4,9 +4,19 @@
   "description":
     "Pomodoro meets Kanban, for individual and team task management",
   "main": "index.js",
-  "repository": "git@github.com:chingu-voyage3/bears-32.git",
-  "author": "chiptus@gmail.com",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chingu-voyage3/bears-32.git"
+  },
+  "author": "",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/chingu-voyage3/bears-32/issues"
+  },
+  "homepage": "https://github.com/chingu-voyage3/bears-32#readme",
   "devDependencies": {
     "eslint": "^4.13.1",
     "eslint-config-prettier": "^2.9.0",
@@ -17,7 +27,8 @@
     "eslint-plugin-standard": "^3.0.1",
     "husky": "^0.14.3",
     "lint-staged": "^6.0.0",
-    "prettier": "^1.9.2"
+    "prettier": "^1.9.2",
+    "webpack": "^3.10.0"
   },
   "scripts": {
     "precommit": "lint-staged",
