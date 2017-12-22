@@ -18,7 +18,9 @@ pauseBtn.addEventListener("click", pauseTimer);
 resetBtn.addEventListener("click", setTimer);
 
 // Initialize page onload
-(function init() {})();
+(function init() {
+  setTimer();
+})();
 
 // Set timer
 function setTimer() {
