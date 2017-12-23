@@ -1,5 +1,9 @@
 // Define standard pomodoro time
 var pomoStandardTime = 25 * 60 * 1000;
+// Initialize varz
+var timerRunning = false;
+var deadline;
+var paused;
 
 // Connect to DOM
 const playBtn = document.querySelector(".playBtn");
@@ -9,10 +13,7 @@ const minutesSpan = document.querySelector(".minutes");
 const secondsSpan = document.querySelector(".seconds");
 const millisecondsSpan = document.querySelector(".milliseconds");
 
-// Initialize varz
-var timeInterval, deadline;
-
-// Set event listeners
+// Set event listeners on buttons
 playBtn.addEventListener("click", runTimer);
 pauseBtn.addEventListener("click", pauseTimer);
 resetBtn.addEventListener("click", setTimer);
@@ -22,14 +23,7 @@ resetBtn.addEventListener("click", setTimer);
   setTimer();
 })();
 
-// Set timer
-function setTimer() {
-  clearInterval(timeInterval);
-  // Define "deadline" aka timer finish time
-  deadline = new Date(Date.parse(new Date()) + pomoStandardTime);
-  timerRefresh(deadline);
-  console.log(deadline);
-}
+// Timer Helpers ------------------------------------------
 
 // Based on a future date, get remaining time (milliseconds)
 function getTimeRemaining(endtime) {
@@ -45,7 +39,7 @@ function getTimeRemaining(endtime) {
 }
 
 // Refresh timer every 100th second with current countdown
-function timerRefresh(deadline) {
+function timerRefresh() {
   // Set initial milliseconds counter
   let milliseconds = 100;
 
@@ -57,23 +51,63 @@ function timerRefresh(deadline) {
   milliseconds === 0 ? (milliseconds = 99) : milliseconds--;
 
   if (t.total <= 0) {
-    clearInterval(timeInterval);
+    clearInterval(timerRunning);
   }
 }
 
-function runTimer() {
-  // Define "deadline" aka timer finish time
-  deadline = new Date(Date.parse(new Date()) + pomoStandardTime);
+// Create new deadline based on time in milliseconds (t)
+function setDeadline(t) {
+  deadline = new Date(Date.parse(new Date()) + t);
+}
 
-  timerRefresh(deadline);
-  timeInterval = setInterval(function() {
-    timerRefresh(deadline);
-  }, 10);
+// Timer Controls ------------------------------------------
+
+// Set/reset timer
+function setTimer() {
+  // Reset timer if it's currently running
+  if (timerRunning) {
+    clearInterval(timerRunning);
+  }
+
+  // Reset timer status
+  timerRunning = false;
+  paused = false;
+
+  // Set deadline and display on page
+  setDeadline(pomoStandardTime);
+  timerRefresh();
+}
+
+function runTimer() {
+  // Only proceed if timer isn't running
+  if (timerRunning === false) {
+    // Set the timer based on whether it's paused (midway through task)
+    // or starting from the beginning
+    if (paused === true) {
+      setDeadline(deadline);
+      paused = false;
+    } else {
+      setDeadline(pomoStandardTime);
+    }
+
+    // Start refreshing timer at increments of 100th of a second
+    timerRefresh();
+    timerRunning = setInterval(function() {
+      timerRefresh();
+    }, 10);
+  }
 }
 
 function pauseTimer() {
-  let t = getTimeRemaining(deadline);
-  clearInterval(timeInterval);
-  deadline = t.total;
-  console.log(deadline);
+  // Only activate pause if timer is running
+  if (timerRunning) {
+    // Calculate remaining time after pause
+    let t = getTimeRemaining(deadline);
+    deadline = t.total;
+
+    // Pause timer
+    clearInterval(timerRunning);
+    timerRunning = false;
+    paused = true;
+  }
 }
