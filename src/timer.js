@@ -2,6 +2,7 @@
 var pomoStandardTime = 25 * 60 * 1000;
 // Initialize varz
 var timerRunning = false;
+var milliseconds = 100;
 var deadline;
 var paused;
 
@@ -40,15 +41,12 @@ function getTimeRemaining(endtime) {
 
 // Refresh timer every 100th second with current countdown
 function timerRefresh() {
-  // Set initial milliseconds counter
-  let milliseconds = 100;
-
   let t = getTimeRemaining(deadline);
 
   minutesSpan.innerHTML = ("0" + t.minutes).slice(-2);
   secondsSpan.innerHTML = ("0" + t.seconds).slice(-2);
   millisecondsSpan.innerHTML = ("0" + milliseconds).slice(-2);
-  milliseconds === 0 ? (milliseconds = 99) : milliseconds--;
+  milliseconds === 0 ? (milliseconds = 100) : milliseconds--;
 
   if (t.total <= 0) {
     clearInterval(timerRunning);
@@ -72,6 +70,7 @@ function setTimer() {
   // Reset timer status
   timerRunning = false;
   paused = false;
+  milliseconds = 100;
 
   // Set deadline and display on page
   setDeadline(pomoStandardTime);
