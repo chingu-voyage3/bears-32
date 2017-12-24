@@ -39,6 +39,12 @@ Should be one of the following:
 
 Use underscore for spaces.
 
+### When should we create a new branch.
+
+If our change is not one of the above (for example documentation), or it's a small bug fix and it is made of 1 or 2 commits, it's ok to push to develop. Otherwise make a new branch.
+
+Anyway, it's a good idea to let the other team members know about the change you made.
+
 ## How to use webpack
 
 For now it's pretty basic, just run the following from the root of the project: `npx webpack`.
