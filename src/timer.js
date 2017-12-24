@@ -1,8 +1,8 @@
-// Define standard pomodoro time
-var pomoStandardTime = 25 * 60 * 1000;
 // Initialize varz
+var pomoStandardTime = 25 * 60 * 1000;
+var testTime = 3000;
 var timerRunning = false;
-var milliseconds = 100;
+var centiseconds = 100;
 var deadline;
 var paused;
 
@@ -12,7 +12,7 @@ const pauseBtn = document.querySelector(".pauseBtn");
 const resetBtn = document.querySelector(".resetBtn");
 const minutesSpan = document.querySelector(".minutes");
 const secondsSpan = document.querySelector(".seconds");
-const millisecondsSpan = document.querySelector(".milliseconds");
+const centisecondsSpan = document.querySelector(".centiseconds");
 
 // Set event listeners on buttons
 playBtn.addEventListener("click", runTimer);
@@ -26,7 +26,7 @@ resetBtn.addEventListener("click", setTimer);
 
 // Timer Helpers ------------------------------------------
 
-// Based on a future date, get remaining time (milliseconds)
+// Based on a future date, get remaining time (centiseconds)
 function getTimeRemaining(endtime) {
   var t = Date.parse(endtime) - Date.parse(new Date());
   var minutes = Math.floor((t / 1000 / 60) % 60);
@@ -45,15 +45,17 @@ function timerRefresh() {
 
   minutesSpan.innerHTML = ("0" + t.minutes).slice(-2);
   secondsSpan.innerHTML = ("0" + t.seconds).slice(-2);
-  millisecondsSpan.innerHTML = ("0" + milliseconds).slice(-2);
-  milliseconds === 0 ? (milliseconds = 100) : milliseconds--;
+  centisecondsSpan.innerHTML = ("0" + centiseconds).slice(-2);
+  centiseconds === 0 ? (centiseconds = 100) : centiseconds--;
 
   if (t.total <= 0) {
     clearInterval(timerRunning);
+    centisecondsSpan.innerHTML = "00";
+    timerRunning = false;
   }
 }
 
-// Create new deadline based on time in milliseconds (t)
+// Create new deadline based on time in centiseconds (t)
 function setDeadline(t) {
   deadline = new Date(Date.parse(new Date()) + t);
 }
@@ -70,10 +72,10 @@ function setTimer() {
   // Reset timer status
   timerRunning = false;
   paused = false;
-  milliseconds = 100;
+  centiseconds = 100;
 
   // Set deadline and display on page
-  setDeadline(pomoStandardTime);
+  setDeadline(testTime);
   timerRefresh();
 }
 
@@ -86,7 +88,7 @@ function runTimer() {
       setDeadline(deadline);
       paused = false;
     } else {
-      setDeadline(pomoStandardTime);
+      setDeadline(testTime);
     }
 
     // Start refreshing timer at increments of 100th of a second
