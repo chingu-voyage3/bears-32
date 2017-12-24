@@ -27,7 +27,17 @@
 
 **Note** : You'll probably need to reload the extension more than once, so leave this tab open.
 
-## Naming Conventions
+## Git
+
+### Branches Naming Conventions
+
+Should be one of the following:
+
+1. devops/x - where x is the change you do (for example `devops/webpack` will be used for adding webpack to our tool chain).
+2. feature/x - where x is the feature we're adding (`feature/timer`).
+3. bug/x - where x is a short description of the bug (`bug/timer_goes_backwards`)
+
+Use underscore for spaces.
 
 ## How to use webpack
 
