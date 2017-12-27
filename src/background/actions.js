@@ -1,4 +1,11 @@
-import { setState, getState } from "./store";
+import store from "./store";
+import { emit } from "../lib/events-emitter";
+import {
+  SESSION_CREATED,
+  SESSION_UPDATED,
+  TODO_CREATED
+  // TODO_UPDATED,
+} from "../lib/events";
 
 let currentSessionId = 0;
 let currentTodoId = 0;
@@ -15,7 +22,7 @@ export function startTimer(todoId) {
     todoId,
     id: currentSessionId++
   };
-  setState(state => ({
+  store.setState(state => ({
     ...state,
     sessions: {
       byId: {
@@ -25,6 +32,7 @@ export function startTimer(todoId) {
       ids: [...state.sessions.ids, session.id]
     }
   }));
+  emit(SESSION_CREATED, session);
 }
 
 /**
@@ -32,12 +40,12 @@ export function startTimer(todoId) {
  * @param {number} sessionId
  */
 export function stopTimer(sessionId) {
-  const session = getState().sessions.byId[sessionId];
+  const session = store.getState().sessions.byId[sessionId];
   const updatedSession = {
     end: new Date(),
     ...session
   };
-  setState(state => ({
+  store.setState(state => ({
     ...state,
     sessions: {
       ...state.sessions,
@@ -47,6 +55,7 @@ export function stopTimer(sessionId) {
       }
     }
   }));
+  emit(SESSION_UPDATED, session);
 }
 
 /**
@@ -60,7 +69,7 @@ export function addTodo(title) {
     expectedPomos: 0,
     sessions: []
   };
-  setState(state => ({
+  store.setState(state => ({
     ...state,
     todos: {
       byId: {
@@ -70,4 +79,5 @@ export function addTodo(title) {
       ids: [...state.todos.ids, todo.id]
     }
   }));
+  emit(TODO_CREATED, title);
 }

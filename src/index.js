@@ -1,1 +1,2 @@
-import "./background-image";
+import "./background";
+import "./newtab";
