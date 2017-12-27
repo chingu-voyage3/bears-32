@@ -37,3 +37,12 @@ var createNewTaskElement = function(taskString){
 	return listItem;
 }
 
+// Add a new task
+var addTask = function() {
+	// Create a new list item with the text from #new-task-input
+	var listItem = createNewTaskElement(taskInput.value);
+	//append listItem to todolistHolder
+	todolistHolder.appendChild(listItem);
+	//update taskInput.value
+	taskInput.value = "";
+}
