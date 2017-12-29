@@ -64,3 +64,13 @@ var editTask = function(){
 	//Toggle .editMode on the parent
 	listItem.classList.toggle("editMode");
 }
+
+// Delete an existing task
+var deleteTask = function() {
+	var listItem = this.parentNode;
+	var ul = listItem.parentNode;
+
+	//Remove the parent list item from the ul
+	ul.removeChild(listItem);
+}
+
