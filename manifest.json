@@ -2,8 +2,10 @@
   "manifest_version": 2,
   "name": "PoKa",
   "version": "1.0.0",
-  "description": "Pomodoro meets Kanban, for individual and team task management",
+  "description":
+    "Pomodoro meets Kanban, for individual and team task management",
   "chrome_url_overrides": {
     "newtab": "index.html"
-  }
+  },
+  "permissions": ["storage"]
 }

@@ -75,7 +75,7 @@ function setTimer() {
   centiseconds = 100;
 
   // Set deadline and display on page
-  setDeadline(testTime);
+  setDeadline(pomoStandardTime);
   timerRefresh();
 }
 
@@ -88,7 +88,7 @@ function runTimer() {
       setDeadline(deadline);
       paused = false;
     } else {
-      setDeadline(testTime);
+      setDeadline(pomoStandardTime);
     }
 
     // Start refreshing timer at increments of 100th of a second
