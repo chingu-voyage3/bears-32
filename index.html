@@ -8,6 +8,30 @@
     <div class="background">
       <h1>PO&middot;KA</h1>
     </div>
+    <div class="todolist">
+      <h2>To-do List</h2>
+      
+      <h3>ADD TASK</h3>
+      <form>
+        <label>
+          <input id="new-task-input" type="text">
+        </label>
+        <button id="add-task-button" type="button">
+          Add
+        </button>
+      </form>
+
+      <h3>TODO</h3>
+      <ul id="todolist-container">
+        <li class="task">
+          <input class="checkbox" type="checkbox">
+          <label>Shopping</label>
+          <input type="text" value="Shopping">
+          <button class="edit">Edit</button>
+          <button class="delete">Delete</button>
+        </li>
+      </ul>
+    </div>
     <script type="text/javascript" src="build/bundle.js"></script>
   </body>
 </html>
