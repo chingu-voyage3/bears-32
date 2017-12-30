@@ -5,7 +5,9 @@
     "Pomodoro meets Kanban, for individual and team task management",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "precommit": "lint-staged",
+    "prettier": "prettier"
   },
   "repository": {
     "type": "git",
@@ -18,6 +20,10 @@
   },
   "homepage": "https://github.com/chingu-voyage3/bears-32#readme",
   "devDependencies": {
+    "@babel/core": "^7.0.0-beta.36",
+    "@babel/preset-stage-0": "^7.0.0-beta.36",
+    "babel-loader": "^8.0.0-beta.0",
+
     "eslint": "^4.13.1",
     "eslint-config-prettier": "^2.9.0",
     "eslint-config-standard": "^11.0.0-beta.0",
@@ -30,11 +36,7 @@
     "prettier": "^1.9.2",
     "webpack": "^3.10.0"
   },
-  "scripts": {
-    "precommit": "lint-staged",
-    "prettier": "prettier"
-  },
   "lint-staged": {
-    "*.{js,json,css}": ["prettier --write", "git add"]
+    "*.{js,json,css,html}": ["prettier --write", "git add"]
   }
 }
