@@ -27,7 +27,23 @@
 
 **Note** : You'll probably need to reload the extension more than once, so leave this tab open.
 
-## Naming Conventions
+## Git
+
+### Branches Naming Conventions
+
+Should be one of the following:
+
+1. devops/x - where x is the change you do (for example `devops/webpack` will be used for adding webpack to our tool chain).
+2. feature/x - where x is the feature we're adding (`feature/timer`).
+3. bug/x - where x is a short description of the bug (`bug/timer_goes_backwards`)
+
+Use underscore for spaces.
+
+### When should we create a new branch.
+
+If our change is not one of the above (for example documentation), or it's a small bug fix and it is made of 1 or 2 commits, it's ok to push to develop. Otherwise make a new branch.
+
+Anyway, it's a good idea to let the other team members know about the change you made.
 
 ## How to use webpack
 
