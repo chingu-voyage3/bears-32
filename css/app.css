@@ -8,6 +8,9 @@ h1 {
 }
 
 .background {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
   background-color: #333;
   background-repeat: no-repeat;
   background-size: cover;
@@ -17,17 +20,34 @@ h1 {
   padding: 20px;
 }
 
+.content {
+  display: flex;
+  background: rgba(255, 255, 255, 0.3);
+  width: 800px;
+}
+
 /* Timer Styling */
 
 .timer {
+  display: flex;
+  flex-flow: column;
   font-family: sans-serif;
   color: #fff;
-  display: flex;
-  flex-flow: row;
   font-weight: 100;
   text-align: center;
   font-size: 60px;
   margin: 20px 0;
+  width: 50%;
+}
+
+.timer .countdown {
+  display: flex;
+  flex-flow: row;
+}
+
+.timer .controls {
+  display: flex;
+  flex-flow: row;
 }
 
 .timer div > span {
@@ -39,4 +59,12 @@ h1 {
 
 .centiseconds {
   color: #777;
+}
+
+/* To Do Styling */
+
+.todolist {
+  display: flex;
+  flex-flow: column;
+  width: 50%;
 }
