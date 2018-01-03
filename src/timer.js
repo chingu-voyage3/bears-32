@@ -1,3 +1,5 @@
+'use strict';
+
 // Initialize varz
 var pomoStandardTime = 25 * 60 * 1000;
 var testTime = 3000;
@@ -7,17 +9,17 @@ var deadline;
 var paused;
 
 // Connect to DOM
-const playBtn = document.querySelector(".playBtn");
-const pauseBtn = document.querySelector(".pauseBtn");
-const resetBtn = document.querySelector(".resetBtn");
-const minutesSpan = document.querySelector(".minutes");
-const secondsSpan = document.querySelector(".seconds");
-const centisecondsSpan = document.querySelector(".centiseconds");
+const playBtn = document.querySelector('.playBtn');
+const pauseBtn = document.querySelector('.pauseBtn');
+const resetBtn = document.querySelector('.resetBtn');
+const minutesSpan = document.querySelector('.minutes');
+const secondsSpan = document.querySelector('.seconds');
+const centisecondsSpan = document.querySelector('.centiseconds');
 
 // Set event listeners on buttons
-playBtn.addEventListener("click", runTimer);
-pauseBtn.addEventListener("click", pauseTimer);
-resetBtn.addEventListener("click", setTimer);
+playBtn.addEventListener('click', runTimer);
+pauseBtn.addEventListener('click', pauseTimer);
+resetBtn.addEventListener('click', setTimer);
 
 // Initialize page onload
 (function init() {
@@ -35,22 +37,23 @@ function getTimeRemaining(endtime) {
   return {
     total: t,
     minutes: minutes,
-    seconds: seconds
+    seconds: seconds,
   };
 }
 
 // Refresh timer every 100th second with current countdown
 function timerRefresh() {
   let t = getTimeRemaining(deadline);
+  // chrome.storage.sync.set({"deadline": t.total});
 
-  minutesSpan.innerHTML = ("0" + t.minutes).slice(-2);
-  secondsSpan.innerHTML = ("0" + t.seconds).slice(-2);
-  centisecondsSpan.innerHTML = ("0" + centiseconds).slice(-2);
+  minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
+  secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
+  centisecondsSpan.innerHTML = ('0' + centiseconds).slice(-2);
   centiseconds === 0 ? (centiseconds = 100) : centiseconds--;
 
   if (t.total <= 0) {
     clearInterval(timerRunning);
-    centisecondsSpan.innerHTML = "00";
+    centisecondsSpan.innerHTML = '00';
     timerRunning = false;
   }
 }
