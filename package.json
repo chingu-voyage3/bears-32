@@ -23,7 +23,6 @@
     "@babel/core": "^7.0.0-beta.36",
     "@babel/preset-stage-0": "^7.0.0-beta.36",
     "babel-loader": "^8.0.0-beta.0",
-
     "eslint": "^4.13.1",
     "eslint-config-prettier": "^2.9.0",
     "eslint-config-standard": "^11.0.0-beta.0",
@@ -37,6 +36,6 @@
     "webpack": "^3.10.0"
   },
   "lint-staged": {
-    "*.{js,json,css,html}": ["prettier --write", "git add"]
+    "*.{js,json,css}": ["prettier --write", "git add"]
   }
 }
