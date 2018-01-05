@@ -44,8 +44,8 @@ var createNewTaskElement = function(taskString) {
 var addTask = function() {
   // Create a new list item with the text from #new-task-input
   var listItem = createNewTaskElement(taskInput.value);
-  //append listItem to todolistHolder
-  todolistHolder.appendChild(listItem);
+  //add listItem to the top of todolistHolder
+  todolistHolder.insertBefore(listItem, todolistHolder.childNodes[0]);
   bindTaskEvents(listItem, taskCompleted);
   //update taskInput.value
   taskInput.value = "";
@@ -86,6 +86,8 @@ var taskCompleted = function() {
   console.log("Task complete...");
   //Append the task list item to the #completed-tasks
   var listItem = this.parentNode;
+  //move listItem to the bottom of the to do list
+  moveToBottom(listItem);
   bindTaskEvents(listItem, taskIncomplete);
 }
 
@@ -95,7 +97,18 @@ var taskIncomplete = function() {
   // When checkbox is unchecked
   // Append the task list item #incomplete-tasks
   var listItem = this.parentNode;
+  //move listItem to the top of the to do list
+  moveToTop(listItem);
   bindTaskEvents(listItem, taskCompleted);
+}
+
+var moveToTop = function(taskListItem){
+  //insert before list[0]
+  todolistHolder.insertBefore(taskListItem, todolistHolder.childNodes[0]);
+}
+var moveToBottom = function(taskListItem){
+  //append to the last item of the to do list
+  todolistHolder.appendChild(taskListItem);
 }
 
 var bindTaskEvents = function(taskListItem, checkBoxEventHandler) {
