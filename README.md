@@ -47,7 +47,10 @@ Anyway, it's a good idea to let the other team members know about the change you
 
 ## How to use webpack
 
-For now it's pretty basic, just run the following from the root of the project: `npx webpack`.
+For now it's pretty basic, just run the following from the root of the project: `yarn build`.
+
+If you want to make webpack build the bundle on every change run `yarn start`
+
 We will be adding different loaders and scripts soon.
 
 What webpack basically does is traversing the dependency tree.

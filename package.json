@@ -7,7 +7,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "precommit": "lint-staged",
-    "prettier": "prettier"
+    "prettier": "prettier",
+    "build": "webpack",
+    "start": "webpack -w"
   },
   "repository": {
     "type": "git",
@@ -23,7 +25,6 @@
     "@babel/core": "^7.0.0-beta.36",
     "@babel/preset-stage-0": "^7.0.0-beta.36",
     "babel-loader": "^8.0.0-beta.0",
-
     "eslint": "^4.13.1",
     "eslint-config-prettier": "^2.9.0",
     "eslint-config-standard": "^11.0.0-beta.0",
