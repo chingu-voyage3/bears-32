@@ -13,7 +13,20 @@ export function createStore() {
       settings: {},
       timer: {
         currentSession: null
-      }
+      },
+      currentBackground: "img/kelly-sikkema-455242.jpg",
+      backgrounds: [
+        {
+          url: 'url("img/andrew-neel-109201.jpg")'
+          // photographer: ,
+          // photographerURL:
+        },
+        {
+          url: 'url("img/kelly-sikkema-455242.jpg")'
+          // photographer: ,
+          // photographerURL:
+        }
+      ]
     },
     subscribers: []
   };
