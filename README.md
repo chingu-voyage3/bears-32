@@ -57,3 +57,19 @@ It starts from a specific entry file (can be more than one file - each file will
 With a blank configuration, webpack can only bundle `js` files, but we can change this by adding loaders.
 
 A _loader_ is a function that takes a string as input (the dependency file content) and outputs a string. For example the babel loader will convert es6 specific code to es5.
+
+## Packages Management
+
+If we want to add a new js library, like `jquery`, we need to follow these steps:
+
+1. Install the package: Run the following in the project root directory
+
+```
+yarn add jquery
+```
+
+2. Require it where you need it:
+
+```
+import $ from 'jquery'
+```
