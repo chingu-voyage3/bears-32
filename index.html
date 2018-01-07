@@ -1,13 +1,67 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>PoKa</title>
-    <link rel="stylesheet" type="text/css" href="css/app.css">
-  </head>
-  <body>
-    <div class="background">
-      <h1>PO&middot;KA</h1>
+
+<head>
+  <title>PoKa</title>
+  <link rel="stylesheet" href="css/app.css">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+  <div class="background">
+    <h1>PO&middot;KA</h1>
+    <div class="content">
+
+      <!-- Pomodoro Timer -->
+      <div class="timer">
+        <div class="countdown">
+          <div>
+            <span class="minutes"></span>
+          </div>
+          <div>
+            <span class="seconds"></span>
+          </div>
+          <div>
+            <span class="centiseconds"></span>
+          </div>
+        </div>
+        <div class="controls">
+          <button class="playBtn">
+            <i class="fa fa-play-circle"></i> PLAY</button>
+          <button class="pauseBtn">PAUSE</button>
+          <button class="resetBtn">RESET</button>
+        </div>
+      </div>
+      <!-- Timer Ends -->
+      <!-- ToDo List -->
+      <div class="todolist">
+        <h2>To-do List</h2>
+        <h3>ADD TASK</h3>
+        <form>
+          <label>
+            <input id="new-task-input" type="text">
+          </label>
+          <button id="add-task-button" type="button">
+            Add
+          </button>
+        </form>
+        <h3>TODO</h3>
+        <ul id="todolist-container">
+          <li class="task">
+            <input class="checkbox" type="checkbox">
+            <label>Shopping</label>
+            <input type="text" value="Shopping">
+            <button class="edit">Edit</button>
+            <button class="delete">Delete</button>
+          </li>
+        </ul>
+      </div>
+      <!-- ToDoList Ends -->
     </div>
-    <script type="text/javascript" src="build/bundle.js"></script>
-  </body>
+    <!-- Content Ends -->
+  </div>
+  <!-- Background Ends -->
+  <script type="text/javascript" src="build/bundle.js"></script>
+</body>
+
 </html>
