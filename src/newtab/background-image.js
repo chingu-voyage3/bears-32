@@ -20,6 +20,10 @@ randomBackgroundButton.addEventListener('click', () => {
   }));
 });
 
-store.subscribe(state => {
-  backgroundImage.style.backgroundImage = `url('${state.currentBackground}')`;
-});
+store.subscribe(state => setBackgroundImage(state.currentBackground));
+
+setBackgroundImage(store.getState().currentBackground);
+
+function setBackgroundImage(url) {
+  backgroundImage.style.backgroundImage = `url('${url}')`;
+}
