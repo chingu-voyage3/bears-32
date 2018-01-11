@@ -47,7 +47,10 @@ Anyway, it's a good idea to let the other team members know about the change you
 
 ## How to use webpack
 
-For now it's pretty basic, just run the following from the root of the project: `npx webpack`.
+For now it's pretty basic, just run the following from the root of the project: `yarn build`.
+
+If you want to make webpack build the bundle on every change run `yarn start`
+
 We will be adding different loaders and scripts soon.
 
 What webpack basically does is traversing the dependency tree.
@@ -57,3 +60,19 @@ It starts from a specific entry file (can be more than one file - each file will
 With a blank configuration, webpack can only bundle `js` files, but we can change this by adding loaders.
 
 A _loader_ is a function that takes a string as input (the dependency file content) and outputs a string. For example the babel loader will convert es6 specific code to es5.
+
+## Packages Management
+
+If we want to add a new js library, like `jquery`, we need to follow these steps:
+
+1. Install the package: Run the following in the project root directory
+
+```
+yarn add jquery
+```
+
+2. Require it where you need it:
+
+```
+import $ from 'jquery'
+```
