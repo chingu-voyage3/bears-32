@@ -3,39 +3,39 @@ export function createStore() {
     state: {
       sessions: {
         byId: {},
-        ids: []
+        ids: [],
       },
       todos: {
         byId: {},
-        ids: []
+        ids: [],
       },
       currentUser: {},
       settings: {},
       timer: {
-        currentSession: null
+        currentSession: null,
       },
-      currentBackground: "img/kelly-sikkema-455242.jpg",
+      currentBackground: 'img/kelly-sikkema-455242.jpg',
       backgrounds: [
         {
-          url: 'url("img/andrew-neel-109201.jpg")'
+          url: 'img/andrew-neel-109201.jpg',
           // photographer: ,
           // photographerURL:
         },
         {
-          url: 'url("img/kelly-sikkema-455242.jpg")'
+          url: 'img/kelly-sikkema-455242.jpg',
           // photographer: ,
           // photographerURL:
-        }
-      ]
+        },
+      ],
     },
-    subscribers: []
+    subscribers: [],
   };
 
   return {
     getState,
     setState,
     subscribe,
-    unsubscribe
+    unsubscribe,
   };
 
   /**
