@@ -4,6 +4,7 @@ import {
   SESSION_UPDATED,
   TODO_CREATED,
   TODO_UPDATED,
+  BACKGROUND_CHANGED,
 } from '../lib/events';
 import store from './store';
 
@@ -56,5 +57,12 @@ subscribe(TODO_UPDATED, todo => {
         [todo.id]: todo,
       },
     },
+  }));
+});
+
+subscribe(BACKGROUND_CHANGED, bgUrl => {
+  store.setState(state => ({
+    ...state,
+    currentBackground: bgUrl,
   }));
 });

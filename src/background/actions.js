@@ -1,11 +1,12 @@
-import store from "./store";
-import { emit } from "../lib/events-emitter";
+import store from './store';
+import { emit } from '../lib/events-emitter';
 import {
   SESSION_CREATED,
   SESSION_UPDATED,
-  TODO_CREATED
+  TODO_CREATED,
+  BACKGROUND_CHANGED,
   // TODO_UPDATED,
-} from "../lib/events";
+} from '../lib/events';
 
 let currentSessionId = 0;
 let currentTodoId = 0;
@@ -20,17 +21,17 @@ export function startTimer(todoId) {
     start: now,
     end: new Date(now.getTime() + 25 * 60 * 1000),
     todoId,
-    id: currentSessionId++
+    id: currentSessionId++,
   };
   store.setState(state => ({
     ...state,
     sessions: {
       byId: {
         ...state.sessions.byId,
-        [session.id]: session
+        [session.id]: session,
       },
-      ids: [...state.sessions.ids, session.id]
-    }
+      ids: [...state.sessions.ids, session.id],
+    },
   }));
   emit(SESSION_CREATED, session);
 }
@@ -43,7 +44,7 @@ export function stopTimer(sessionId) {
   const session = store.getState().sessions.byId[sessionId];
   const updatedSession = {
     end: new Date(),
-    ...session
+    ...session,
   };
   store.setState(state => ({
     ...state,
@@ -51,9 +52,9 @@ export function stopTimer(sessionId) {
       ...state.sessions,
       byId: {
         ...state.sessions.byId,
-        [sessionId]: updatedSession
-      }
-    }
+        [sessionId]: updatedSession,
+      },
+    },
   }));
   emit(SESSION_UPDATED, session);
 }
@@ -67,17 +68,21 @@ export function addTodo(title) {
     title,
     id: currentTodoId++,
     expectedPomos: 0,
-    sessions: []
+    sessions: [],
   };
   store.setState(state => ({
     ...state,
     todos: {
       byId: {
         ...state.sessions.byId,
-        [todo.id]: todo
+        [todo.id]: todo,
       },
-      ids: [...state.todos.ids, todo.id]
-    }
+      ids: [...state.todos.ids, todo.id],
+    },
   }));
   emit(TODO_CREATED, title);
+}
+
+export function changeBackground(bgId) {
+  emit(BACKGROUND_CHANGED, store.getState().backgrounds.byId[bgId].url);
 }

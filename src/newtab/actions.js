@@ -1,6 +1,11 @@
-import { emit } from "../lib/events-emitter";
+import { emit } from '../lib/events-emitter';
 
-import { START_TIMER, STOP_TIMER, ADD_TODO } from "../lib/events";
+import {
+  START_TIMER,
+  STOP_TIMER,
+  ADD_TODO,
+  CHANGE_BACKGROUND,
+} from '../lib/events';
 
 /**
  * Start a new session for the timer
@@ -24,4 +29,8 @@ export function stopTimer(sessionId) {
  */
 export function addTodo(title) {
   emit(ADD_TODO, title);
+}
+
+export function setBackground(bgId) {
+  emit(CHANGE_BACKGROUND, bgId);
 }

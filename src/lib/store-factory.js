@@ -15,18 +15,23 @@ export function createStore() {
         currentSession: null,
       },
       currentBackground: 'img/kelly-sikkema-455242.jpg',
-      backgrounds: [
-        {
-          url: 'img/andrew-neel-109201.jpg',
-          // photographer: ,
-          // photographerURL:
+      backgrounds: {
+        byId: {
+          '1': {
+            url: 'img/andrew-neel-109201.jpg',
+            id: 1,
+            // photographer: ,
+            // photographerURL:
+          },
+          '2': {
+            url: 'img/kelly-sikkema-455242.jpg',
+            id: 2,
+            // photographer: ,
+            // photographerURL:
+          },
         },
-        {
-          url: 'img/kelly-sikkema-455242.jpg',
-          // photographer: ,
-          // photographerURL:
-        },
-      ],
+        ids: [1, 2],
+      },
     },
     subscribers: [],
   };

@@ -1,3 +1,4 @@
+import { setBackground } from './actions';
 import { getRandomElement } from '../lib/helpers';
 import store from './store';
 // Still deliberating on whether to use the Unsplash API, or just download
@@ -14,14 +15,11 @@ const randomBackgroundButton = document.querySelector('.setRandomBg');
 // Insert background image into DOM
 
 randomBackgroundButton.addEventListener('click', () => {
-  store.setState(state => ({
-    ...state,
-    currentBackground: getRandomElement(state.backgrounds).url,
-  }));
+  setBackground(getRandomElement(store.getState().backgrounds.ids));
 });
 
 store.subscribe(state => setBackgroundImage(state.currentBackground));
-
+// run the function also on tab init
 setBackgroundImage(store.getState().currentBackground);
 
 function setBackgroundImage(url) {
