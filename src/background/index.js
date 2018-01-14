@@ -1,2 +1,3 @@
-import "./store";
-import "./events-handler";
+import './store';
+import { initEventsHandler } from './events-handler';
+initEventsHandler();

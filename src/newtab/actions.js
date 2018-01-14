@@ -12,7 +12,7 @@ import {
  * @param {number} todoId
  */
 export function startTimer(todoId) {
-  emit(START_TIMER, todoId);
+  emit(START_TIMER, { todoId });
 }
 
 /**
@@ -20,7 +20,7 @@ export function startTimer(todoId) {
  * @param {number} sessionId
  */
 export function stopTimer(sessionId) {
-  emit(STOP_TIMER, sessionId);
+  emit(STOP_TIMER, { sessionId });
 }
 
 /**
@@ -28,9 +28,9 @@ export function stopTimer(sessionId) {
  * @param {string} title
  */
 export function addTodo(title) {
-  emit(ADD_TODO, title);
+  emit(ADD_TODO, { title });
 }
 
 export function setBackground(bgId) {
-  emit(CHANGE_BACKGROUND, bgId);
+  emit(CHANGE_BACKGROUND, { bgId });
 }

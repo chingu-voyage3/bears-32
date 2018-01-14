@@ -1,4 +1,4 @@
-import { subscribe } from '../lib/events-emitter';
+import { subscribe, initEventsManager } from '../lib/events-emitter';
 import {
   SESSION_CREATED,
   SESSION_UPDATED,
@@ -8,7 +8,60 @@ import {
 } from '../lib/events';
 import store from './store';
 
-subscribe(SESSION_CREATED, session => {
+export function initEventsHandler() {
+  initEventsManager();
+  subscribe(SESSION_CREATED, sessionCreated);
+  subscribe(SESSION_UPDATED, sessionUpdated);
+  subscribe(TODO_CREATED, todoCreated);
+  subscribe(TODO_UPDATED, todoUpdated);
+  subscribe(BACKGROUND_CHANGED, backgroundChanged);
+}
+function backgroundChanged({ url }) {
+  store.setState(state => ({
+    ...state,
+    currentBackground: url,
+  }));
+}
+
+function todoUpdated({ todo }) {
+  store.setState(state => ({
+    ...state,
+    sessions: {
+      byId: {
+        ...state.sessions.byId,
+        [todo.id]: todo,
+      },
+    },
+  }));
+}
+
+function todoCreated({ todo }) {
+  store.setState(state => ({
+    ...state,
+    todos: {
+      byId: {
+        ...state.todos.byId,
+        [todo.id]: todo,
+      },
+      ids: [...state.todos.ids, todo.id],
+    },
+  }));
+}
+
+function sessionUpdated({ session }) {
+  store.setState(state => ({
+    ...state,
+    sessions: {
+      ...state.sessions,
+      byId: {
+        ...state.sessions.byId,
+        [session.id]: session,
+      },
+    },
+  }));
+}
+
+function sessionCreated({ session }) {
   store.setState(state => ({
     ...state,
     sessions: {
@@ -20,49 +73,4 @@ subscribe(SESSION_CREATED, session => {
       ids: [...state.sessions.ids, session.id],
     },
   }));
-});
-
-subscribe(SESSION_UPDATED, session => {
-  store.setState(state => ({
-    ...state,
-    sessions: {
-      ...state.sessions,
-      byId: {
-        ...state.sessions.byId,
-        [session.id]: session,
-      },
-    },
-  }));
-});
-
-subscribe(TODO_CREATED, todo => {
-  store.setState(state => ({
-    ...state,
-    todos: {
-      byId: {
-        ...state.todos.byId,
-        [todo.id]: todo,
-      },
-      ids: [...state.todos.ids, todo.id],
-    },
-  }));
-});
-
-subscribe(TODO_UPDATED, todo => {
-  store.setState(state => ({
-    ...state,
-    sessions: {
-      byId: {
-        ...state.sessions.byId,
-        [todo.id]: todo,
-      },
-    },
-  }));
-});
-
-subscribe(BACKGROUND_CHANGED, bgUrl => {
-  store.setState(state => ({
-    ...state,
-    currentBackground: bgUrl,
-  }));
-});
+}

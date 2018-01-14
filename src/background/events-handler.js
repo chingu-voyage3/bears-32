@@ -1,4 +1,4 @@
-import { subscribe } from '../lib/events-emitter';
+import { subscribe, initEventsManager } from '../lib/events-emitter';
 
 import {
   ADD_TODO,
@@ -9,7 +9,10 @@ import {
 
 import { addTodo, startTimer, stopTimer, changeBackground } from './actions';
 
-subscribe(ADD_TODO, addTodo);
-subscribe(START_TIMER, startTimer);
-subscribe(STOP_TIMER, stopTimer);
-subscribe(CHANGE_BACKGROUND, changeBackground);
+export function initEventsHandler() {
+  initEventsManager();
+  subscribe(ADD_TODO, addTodo);
+  subscribe(START_TIMER, startTimer);
+  subscribe(STOP_TIMER, stopTimer);
+  subscribe(CHANGE_BACKGROUND, changeBackground);
+}
