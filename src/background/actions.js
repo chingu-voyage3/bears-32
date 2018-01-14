@@ -15,7 +15,7 @@ let currentTodoId = 0;
  * Start a new session for the timer
  * @param {number} todoId
  */
-export function startTimer(todoId) {
+export function startTimer({ todoId }) {
   const now = new Date();
   const session = {
     start: now,
@@ -33,14 +33,14 @@ export function startTimer(todoId) {
       ids: [...state.sessions.ids, session.id],
     },
   }));
-  emit(SESSION_CREATED, session);
+  emit(SESSION_CREATED, { session });
 }
 
 /**
  * Stops the timer for session with the supplied `sessionId`
  * @param {number} sessionId
  */
-export function stopTimer(sessionId) {
+export function stopTimer({ sessionId }) {
   const session = store.getState().sessions.byId[sessionId];
   const updatedSession = {
     end: new Date(),
@@ -56,14 +56,14 @@ export function stopTimer(sessionId) {
       },
     },
   }));
-  emit(SESSION_UPDATED, session);
+  emit(SESSION_UPDATED, { session });
 }
 
 /**
  * Add a todo with the supplied title
  * @param {string} title
  */
-export function addTodo(title) {
+export function addTodo({ title }) {
   const todo = {
     title,
     id: currentTodoId++,
@@ -80,9 +80,9 @@ export function addTodo(title) {
       ids: [...state.todos.ids, todo.id],
     },
   }));
-  emit(TODO_CREATED, title);
+  emit(TODO_CREATED, { title });
 }
 
-export function changeBackground(bgId) {
-  emit(BACKGROUND_CHANGED, store.getState().backgrounds.byId[bgId].url);
+export function changeBackground({ bgId }) {
+  emit(BACKGROUND_CHANGED, store.getState().backgrounds.byId[bgId]);
 }
