@@ -1,4 +1,5 @@
 const events = {};
+
 export function initEventsManager() {
   chrome.extension.onMessage.addListener(function(
     message,
