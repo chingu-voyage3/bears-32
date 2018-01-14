@@ -114,3 +114,18 @@ Events names are written in `scope/CAPS_UNDERSCORE`
 * `ui/START_TIMER`: `{todoId}`
 * `ui/STOP_TIMER`: `{sessionId}`
 * `ui/ADD_TODO`: `{description}`
+
+## Project structure:
+
+* build: the build files, this is the files that chrome loads.
+* src: the source files - this is where we work.
+  * background: files that are responsible for the extension background script.
+  * newtab: files that are responsible for the newtab.
+  * lib: common files
+* root: config files and readme
+
+### Similar files between background and newtab:
+
+* events-handler - functions that responde to events that this module receives
+* store - where the state store is created.
+* index - root file
