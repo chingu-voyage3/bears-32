@@ -2,6 +2,21 @@ const taskInput = document.getElementById('new-task-input');
 const addButton = document.getElementById('add-task-button');
 const todolistHolder = document.getElementById('todolist-container');
 
+// Set the click handler to the addTask function
+// addButton.onclick = addTask;
+addButton.addEventListener('click', addTask);
+
+// Cycle over the incompleteTaskHolder ul list items
+for (let i = 0; i < todolistHolder.children.length; i++) {
+  // bind events to list item's children (taskCompleted)
+  bindTaskEvents(todolistHolder.children[i], taskCompleted);
+}
+// Cycle over the completeTaskHolder ul list items
+for (let i = 0; i < todolistHolder.children.length; i++) {
+  // bind events to list item's children (taskIncompleted)
+  bindTaskEvents(todolistHolder.children[i], taskIncomplete);
+}
+
 function createNewTaskElement(taskString) {
   // Create List Item
   const listItem = document.createElement('li');
@@ -77,10 +92,6 @@ function deleteTask() {
   ul.removeChild(listItem);
 }
 
-// Set the click handler to the addTask function
-// addButton.onclick = addTask;
-addButton.addEventListener('click', addTask);
-
 function taskCompleted() {
   console.log('Task complete...');
   // Append the task list item to the #completed-tasks
@@ -125,15 +136,4 @@ function bindTaskEvents(taskListItem, checkBoxEventHandler) {
 
   // bind checkBoxEventHandler to checkbox
   checkBox.onchange = checkBoxEventHandler;
-}
-
-// Cycle over the incompleteTaskHolder ul list items
-for (let i = 0; i < todolistHolder.children.length; i++) {
-  // bind events to list item's children (taskCompleted)
-  bindTaskEvents(todolistHolder.children[i], taskCompleted);
-}
-// Cycle over the completeTaskHolder ul list items
-for (let i = 0; i < todolistHolder.children.length; i++) {
-  // bind events to list item's children (taskIncompleted)
-  bindTaskEvents(todolistHolder.children[i], taskIncomplete);
 }
