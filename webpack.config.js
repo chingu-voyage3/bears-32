@@ -1,5 +1,5 @@
 const path = require('path');
-
+var webpack = require('webpack');
 module.exports = {
   entry: {
     newtab: './src/newtab/index.js',
@@ -20,4 +20,12 @@ module.exports = {
       },
     ],
   },
+  plugins: [
+    new webpack.ProvidePlugin({
+      $: 'jquery',
+      jQuery: 'jquery',
+      'window.jQuery': 'jquery',
+      'window.$': 'jquery',
+    }),
+  ],
 };
