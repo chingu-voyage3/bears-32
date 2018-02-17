@@ -16,9 +16,10 @@ export function initEventsManager() {
     }
     console.log(`Received ${message.type} with args:`, message.payload);
 
-    eventSubscribers.forEach(e => e(message.payload));
+    eventSubscribers.forEach(e => e(message.payload, sendResponse));
   });
 }
+
 export function subscribe(event, method) {
   events[event] = events[event] || [];
   events[event].push(method);
@@ -27,5 +28,9 @@ export function subscribe(event, method) {
 export function emit(type, payload) {
   console.log(`Emitting ${type} with args:`, payload);
 
-  chrome.extension.sendMessage({ type, payload });
+  return new Promise((resolve, reject) => {
+    chrome.extension.sendMessage({ type, payload }, response => {
+      resolve(response);
+    });
+  });
 }
