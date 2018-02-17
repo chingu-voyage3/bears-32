@@ -9,7 +9,7 @@
     "precommit": "lint-staged",
     "prettier": "prettier",
     "build": "webpack",
-    "start": "webpack -w"
+    "start": "NODE_ENV=development webpack -w"
   },
   "repository": {
     "type": "git",

@@ -1,5 +1,7 @@
 const path = require('path');
-var webpack = require('webpack');
+const webpack = require('webpack');
+const ChromeExtensionReloader = require('webpack-chrome-extension-reloader');
+
 module.exports = {
   entry: './src/index.js',
   output: {
@@ -24,5 +26,6 @@ module.exports = {
       'window.jQuery': 'jquery',
       'window.$': 'jquery',
     }),
+    new ChromeExtensionReloader(),
   ],
 };
