@@ -4,9 +4,12 @@ const ChromeExtensionReloader = require('webpack-chrome-extension-reloader');
 const ChromeDevPlugin = require('chrome-dev-webpack-plugin');
 
 module.exports = {
-  entry: './src/index.js',
+  entry: {
+    newtab: './src/newtab/index.js',
+    background: './src/background/index.js',
+  },
   output: {
-    filename: 'bundle.js',
+    filename: '[name].js',
     path: path.resolve(__dirname, 'build'),
   },
   module: {

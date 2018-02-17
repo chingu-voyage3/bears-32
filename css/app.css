@@ -76,11 +76,13 @@ h1 {
 .todolist li * {
   float: left;
 }
-.todolist li, h3 {
-  clear:both;
-  list-style:none;
+.todolist li,
+h3 {
+  clear: both;
+  list-style: none;
 }
-.todolist input, button {
+.todolist input,
+button {
   outline: none;
 }
 .todolist button {
@@ -107,7 +109,7 @@ label[for='new-task'] {
   margin: 0;
   text-transform: uppercase;
 }
-.todolist input[type="text"] {
+.todolist input[type='text'] {
   margin: 0;
   font-size: 18px;
   line-height: 18px;
@@ -119,7 +121,7 @@ label[for='new-task'] {
   font-family: Lato, sans-serif;
   color: #888;
 }
-.todolist input[type="text"]:focus {
+.todolist input[type='text']:focus {
   color: #333;
 }
 
@@ -133,7 +135,7 @@ label[for='new-task'] {
   width: 318px;
 }
 .todolist p > button:hover {
-  color: #0FC57C;
+  color: #0fc57c;
 }
 
 /* Task list */
@@ -142,7 +144,7 @@ label[for='new-task'] {
   padding: 20px 0;
   border-bottom: 1px solid #eee;
 }
-.todolist li > input[type="checkbox"] {
+.todolist li > input[type='checkbox'] {
   margin: 0 10px;
   position: relative;
   top: 15px;
@@ -153,28 +155,28 @@ label[for='new-task'] {
   width: 237px;
   padding: 0 0 0 11px;
 }
-.todolist li >  input[type="text"] {
+.todolist li > input[type='text'] {
   width: 226px;
 }
 .todolist li > .delete:hover {
-  color: #CF2323;
+  color: #cf2323;
 }
 
 /* Completed */
-.todolist input[type="checkbox"]:checked + label{
+.todolist input[type='checkbox']:checked + label {
   text-decoration: line-through;
-  color: rgba(0,0,0,.3);
+  color: rgba(0, 0, 0, 0.3);
 }
 
 /* Edit Task */
-.todolist ul li input[type=text] {
-  display:none;
+.todolist ul li input[type='text'] {
+  display: none;
 }
 
-.todolist ul li.editMode input[type=text] {
-  display:block;
+.todolist ul li.editMode input[type='text'] {
+  display: block;
 }
 
 .todolist ul li.editMode label {
-  display:none;
+  display: none;
 }

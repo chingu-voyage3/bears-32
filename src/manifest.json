@@ -6,5 +6,8 @@
     "Pomodoro meets Kanban, for individual and team task management",
   "chrome_url_overrides": {
     "newtab": "index.html"
+  },
+  "background": {
+    "page": "background.html"
   }
 }
