@@ -2,7 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const ChromeExtensionReloader = require('webpack-chrome-extension-reloader');
 const ChromeDevPlugin = require('chrome-dev-webpack-plugin');
-
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   entry: {
     newtab: './src/newtab/index.js',
@@ -32,8 +32,12 @@ module.exports = {
     }),
     new ChromeExtensionReloader(),
     new ChromeDevPlugin({
-      output: './build/manifest.json',
+      output: './manifest.json',
       entry: './src/manifest.json',
+    }),
+    new HtmlWebpackPlugin({
+      template: './src/index.html',
+      chunks: ['newtab'],
     }),
   ],
 };
