@@ -1,20 +1,40 @@
+import store from './store';
+import { addTodo } from './actions';
+
 const taskInput = document.getElementById('new-task-input');
 const addButton = document.getElementById('add-task-button');
 const todolistHolder = document.getElementById('todolist-container');
 
 // Set the click handler to the addTask function
 // addButton.onclick = addTask;
-addButton.addEventListener('click', addTask);
+addButton.addEventListener('click', handleAddTask);
 
-// Cycle over the incompleteTaskHolder ul list items
-for (let i = 0; i < todolistHolder.children.length; i++) {
-  // bind events to list item's children (taskCompleted)
-  bindTaskEvents(todolistHolder.children[i], taskCompleted);
+handleStateChange(store.getState());
+
+store.subscribe(handleStateChange);
+
+function handleStateChange(state) {
+  const todoIdList = state.todos.ids;
+  const todosMap = state.todos.byId;
+  const todos = todoIdList.map(id => todosMap[id]);
+  updateTodoList(todos);
 }
-// Cycle over the completeTaskHolder ul list items
-for (let i = 0; i < todolistHolder.children.length; i++) {
-  // bind events to list item's children (taskIncompleted)
-  bindTaskEvents(todolistHolder.children[i], taskIncomplete);
+
+function handleAddTask() {
+  addTodo(taskInput.value);
+  // empty taskInput
+  taskInput.value = '';
+}
+
+function updateTodoList(todos) {
+  const todoElements = todos.map(todo => createNewTaskElement(todo.title));
+  // Cycle over the incompleteTaskHolder ul list items
+  for (let i = 0; i < todoElements.length; i++) {
+    // bind events to list item's children (taskCompleted)
+    bindTaskEvents(todoElements[i], taskCompleted);
+    bindTaskEvents(todoElements[i], taskIncomplete);
+    todolistHolder.appendChild(todoElements[i]);
+  }
 }
 
 function createNewTaskElement(taskString) {
@@ -54,16 +74,16 @@ function createNewTaskElement(taskString) {
   return listItem;
 }
 
-// Add a new task
-function addTask() {
-  // Create a new list item with the text from #new-task-input
-  const listItem = createNewTaskElement(taskInput.value);
-  // add listItem to the top of todolistHolder
-  todolistHolder.insertBefore(listItem, todolistHolder.childNodes[0]);
-  bindTaskEvents(listItem, taskCompleted);
-  // update taskInput.value
-  taskInput.value = '';
-}
+// // Add a new task
+// function addTask() {
+//   // Create a new list item with the text from #new-task-input
+//   const listItem = createNewTaskElement(taskInput.value);
+//   // add listItem to the top of todolistHolder
+//   todolistHolder.insertBefore(listItem, todolistHolder.childNodes[0]);
+//   bindTaskEvents(listItem, taskCompleted);
+//   // update taskInput.value
+//   taskInput.value = '';
+// }
 
 // Edit an existing task
 function editTask() {
