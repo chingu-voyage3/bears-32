@@ -10,6 +10,7 @@ import {
   START_TIMER,
   STOP_TIMER,
   CHANGE_BACKGROUND,
+  GET_STORE,
   // TODO_UPDATED,
 } from '../lib/events';
 
@@ -22,6 +23,8 @@ export function initEventsHandler() {
   subscribe(START_TIMER, startTimer);
   subscribe(STOP_TIMER, stopTimer);
   subscribe(CHANGE_BACKGROUND, changeBackground);
+
+  subscribe(GET_STORE, (_, sendResponse) => sendResponse(store.getState()));
 }
 
 /**
@@ -93,7 +96,7 @@ export function addTodo({ title }) {
       ids: [...state.todos.ids, todo.id],
     },
   }));
-  emit(TODO_CREATED, { title });
+  emit(TODO_CREATED, todo);
 }
 
 export function changeBackground({ bgId }) {

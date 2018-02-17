@@ -8,3 +8,5 @@ export const START_TIMER = 'ui/START_TIMER';
 export const STOP_TIMER = 'ui/STOP_TIMER';
 export const ADD_TODO = 'ui/ADD_TODO';
 export const CHANGE_BACKGROUND = 'ui/CHANGE_BACKGROUND';
+
+export const GET_STORE = 'ui/GET_STORE';
