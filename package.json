@@ -26,6 +26,7 @@
     "@babel/preset-stage-0": "^7.0.0-beta.36",
     "babel-loader": "^8.0.0-beta.0",
     "chrome-dev-webpack-plugin": "^0.3.3",
+    "css-loader": "^0.28.9",
     "eslint": "^4.13.1",
     "eslint-config-prettier": "^2.9.0",
     "eslint-config-standard": "^11.0.0-beta.0",
@@ -37,6 +38,7 @@
     "husky": "^0.14.3",
     "lint-staged": "^6.0.0",
     "prettier": "^1.9.2",
+    "style-loader": "^0.20.2",
     "webpack": "^3.10.0",
     "webpack-chrome-extension-reloader": "^0.6.5"
   },
