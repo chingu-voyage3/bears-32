@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const ChromeExtensionReloader = require('webpack-chrome-extension-reloader');
+const ChromeDevPlugin = require('chrome-dev-webpack-plugin');
 
 module.exports = {
   entry: './src/index.js',
@@ -27,5 +28,9 @@ module.exports = {
       'window.$': 'jquery',
     }),
     new ChromeExtensionReloader(),
+    new ChromeDevPlugin({
+      output: './build/manifest.json',
+      entry: './src/manifest.json',
+    }),
   ],
 };
