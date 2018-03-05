@@ -1,6 +1,8 @@
 const path = require('path');
-var webpack = require('webpack');
-
+const webpack = require('webpack');
+const ChromeExtensionReloader = require('webpack-chrome-extension-reloader');
+const ChromeDevPlugin = require('chrome-dev-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   entry: {
     newtab: './src/newtab/index.js',
@@ -19,6 +21,10 @@ module.exports = {
           loader: 'babel-loader',
         },
       },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
+      },
     ],
   },
   plugins: [
@@ -27,6 +33,15 @@ module.exports = {
       jQuery: 'jquery',
       'window.jQuery': 'jquery',
       'window.$': 'jquery',
+    }),
+    new ChromeExtensionReloader(),
+    new ChromeDevPlugin({
+      output: './manifest.json',
+      entry: './src/manifest.json',
+    }),
+    new HtmlWebpackPlugin({
+      template: './src/index.html',
+      chunks: ['newtab'],
     }),
   ],
 };
