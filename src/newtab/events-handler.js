@@ -23,7 +23,7 @@ function backgroundChanged({ url }) {
   }));
 }
 
-function todoUpdated({ todo }) {
+function todoUpdated(todo) {
   store.setState(state => ({
     ...state,
     sessions: {
@@ -35,7 +35,7 @@ function todoUpdated({ todo }) {
   }));
 }
 
-function todoCreated({ todo }) {
+function todoCreated(todo) {
   store.setState(state => ({
     ...state,
     todos: {
@@ -48,7 +48,7 @@ function todoCreated({ todo }) {
   }));
 }
 
-function sessionUpdated({ session }) {
+function sessionUpdated(session) {
   store.setState(state => ({
     ...state,
     sessions: {
@@ -61,7 +61,7 @@ function sessionUpdated({ session }) {
   }));
 }
 
-function sessionCreated({ session }) {
+function sessionCreated(session) {
   store.setState(state => ({
     ...state,
     sessions: {
