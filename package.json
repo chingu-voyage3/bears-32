@@ -7,7 +7,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "precommit": "lint-staged",
-    "prettier": "prettier"
+    "prettier": "prettier",
+    "build": "webpack",
+    "start": "NODE_ENV=development webpack -w"
   },
   "repository": {
     "type": "git",
@@ -23,6 +25,8 @@
     "@babel/core": "^7.0.0-beta.36",
     "@babel/preset-stage-0": "^7.0.0-beta.36",
     "babel-loader": "^8.0.0-beta.0",
+    "chrome-dev-webpack-plugin": "^0.3.3",
+    "css-loader": "^0.28.9",
     "eslint": "^4.13.1",
     "eslint-config-prettier": "^2.9.0",
     "eslint-config-standard": "^11.0.0-beta.0",
@@ -30,12 +34,21 @@
     "eslint-plugin-node": "^5.2.1",
     "eslint-plugin-promise": "^3.6.0",
     "eslint-plugin-standard": "^3.0.1",
+    "html-webpack-plugin": "^2.30.1",
     "husky": "^0.14.3",
     "lint-staged": "^6.0.0",
     "prettier": "^1.9.2",
-    "webpack": "^3.10.0"
+    "style-loader": "^0.20.2",
+    "webpack": "^3.10.0",
+    "webpack-chrome-extension-reloader": "^0.6.5"
   },
   "lint-staged": {
     "*.{js,json,css}": ["prettier --write", "git add"]
+  },
+  "dependencies": {
+    "jquery": "^3.2.1",
+    "jquery-ui": "^1.12.1",
+    "jquery-ui-bundle": "^1.12.1",
+    "jquery-ui-dist": "^1.12.1"
   }
 }

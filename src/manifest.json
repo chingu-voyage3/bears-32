@@ -7,5 +7,7 @@
   "chrome_url_overrides": {
     "newtab": "index.html"
   },
-  "permissions": ["storage"]
+  "background": {
+    "scripts": ["background.js"]
+  }
 }
