@@ -7,11 +7,14 @@ import {
   TODO_CREATED,
   BACKGROUND_CHANGED,
   ADD_TODO,
+  EDIT_TODO,
+  DELETE_TODO,
   START_TIMER,
   STOP_TIMER,
   CHANGE_BACKGROUND,
   GET_STORE,
-  // TODO_UPDATED,
+  TODO_UPDATED,
+  TODO_DELETED,
 } from '../lib/events';
 
 let currentSessionId = 0;
@@ -20,6 +23,8 @@ let currentTodoId = 0;
 export function initEventsHandler() {
   initEventsManager();
   subscribe(ADD_TODO, addTodo);
+  subscribe(EDIT_TODO, editTodo);
+  subscribe(DELETE_TODO, deleteTodo);
   subscribe(START_TIMER, startTimer);
   subscribe(STOP_TIMER, stopTimer);
   subscribe(CHANGE_BACKGROUND, changeBackground);
@@ -97,6 +102,40 @@ export function addTodo({ title }) {
     },
   }));
   emit(TODO_CREATED, todo);
+}
+
+export function deleteTodo(id) {
+  store.setState(state => ({
+    ...state,
+    todos: {
+      byId: removeTodoFromById(state.todos.byId, id),
+      ids: state.todos.ids.filter(todoId => todoId !== id),
+    },
+  }));
+  emit(TODO_DELETED, id);
+}
+
+function removeTodoFromById(todoById, id) {
+  const keys = Object.keys(todoById).filter(key => key !== id);
+  const newState = keys.reduce((o, key) => {
+    o[key] = todoById[key];
+    return o;
+  }, {});
+  return newState;
+}
+
+export function editTodo(todo) {
+  store.setState(state => ({
+    ...state,
+    todos: {
+      ...state.todos,
+      byId: {
+        ...state.todos.byId,
+        [todo.id]: { ...state.todos.byId[todo.id], ...todo },
+      },
+    },
+  }));
+  emit(TODO_UPDATED, todo);
 }
 
 export function changeBackground({ bgId }) {
