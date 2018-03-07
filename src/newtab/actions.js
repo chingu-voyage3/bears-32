@@ -4,6 +4,8 @@ import {
   START_TIMER,
   STOP_TIMER,
   ADD_TODO,
+  DELETE_TODO,
+  EDIT_TODO,
   CHANGE_BACKGROUND,
 } from '../lib/events';
 
@@ -29,6 +31,14 @@ export function stopTimer(sessionId) {
  */
 export function addTodo(title) {
   emit(ADD_TODO, { title });
+}
+
+export function deleteTodo(id) {
+  emit(DELETE_TODO, id);
+}
+
+export function editTodo(todo) {
+  emit(EDIT_TODO, todo);
 }
 
 export function setBackground(bgId) {

@@ -6,7 +6,7 @@ import './style/app.css';
 import './store';
 import { initEventsHandler } from './events-handler';
 import './background-image';
-import './todolist';
+import './todolist/todolist';
 
 initEventsHandler();
 
