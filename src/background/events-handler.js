@@ -1,5 +1,6 @@
 import store from './store';
 import { subscribe, initEventsManager, emit } from '../lib/events-emitter';
+import uuid from 'uuid/v4';
 
 import {
   SESSION_CREATED,
@@ -16,9 +17,6 @@ import {
   TODO_UPDATED,
   TODO_DELETED,
 } from '../lib/events';
-
-let currentSessionId = 0;
-let currentTodoId = 0;
 
 export function initEventsHandler() {
   initEventsManager();
@@ -42,7 +40,7 @@ export function startTimer({ todoId }) {
     start: now,
     end: new Date(now.getTime() + 25 * 60 * 1000),
     todoId,
-    id: currentSessionId++,
+    id: uuid(),
   };
   store.setState(state => ({
     ...state,
@@ -87,15 +85,16 @@ export function stopTimer({ sessionId }) {
 export function addTodo({ title }) {
   const todo = {
     title,
-    id: currentTodoId++,
+    id: uuid(),
     expectedPomos: 0,
     sessions: [],
+    completed: false,
   };
   store.setState(state => ({
     ...state,
     todos: {
       byId: {
-        ...state.sessions.byId,
+        ...state.todos.byId,
         [todo.id]: todo,
       },
       ids: [...state.todos.ids, todo.id],
