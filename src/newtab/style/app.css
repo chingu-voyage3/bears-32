@@ -4,7 +4,9 @@ html {
 }
 
 h1 {
-  margin: 0;
+  margin: 100px;
+  background: #333;
+  color: #eee;
 }
 
 .background {
@@ -17,13 +19,14 @@ h1 {
   background-position: center center;
   width: 100vw;
   height: 100vh;
-  padding: 20px;
+  padding: 0px;
 }
 
 .content {
   display: flex;
+  flex-flow: column;
   background: rgba(255, 255, 255, 0.95);
-  width: 800px;
+  margin: 20px;
 }
 
 /* Timer Styling */
