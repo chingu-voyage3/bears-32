@@ -34,7 +34,7 @@ module.exports = {
       'window.jQuery': 'jquery',
       'window.$': 'jquery',
     }),
-    new ChromeExtensionReloader(),
+    // new ChromeExtensionReloader(),
     new ChromeDevPlugin({
       output: './manifest.json',
       entry: './src/manifest.json',
