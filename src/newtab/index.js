@@ -7,6 +7,7 @@ import './store';
 import { initEventsHandler } from './events-handler';
 import './background-image';
 import './todolist';
+import './timer';
 
 initEventsHandler();
 
