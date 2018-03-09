@@ -14,7 +14,7 @@ export function createStore() {
       timer: {
         currentSession: null,
       },
-      currentBackground: 'img/simon-migaj-494807-unsplash.jpg',
+      currentBackground: 'img/darkness-347018-unsplash.jpg',
       backgrounds: {
         byId: {
           '1': {
