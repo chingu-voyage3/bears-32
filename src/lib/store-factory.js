@@ -14,11 +14,9 @@ export function createStore() {
       timer: {
         currentSession: null,
       },
-      //currentBackground: 'img/simon-migaj-494807-unsplash.jpg',
       currentBackground: 'img/darkness-347018-unsplash.jpg',
       backgrounds: {
         byId: {
-          /*
           '1': {
             url: 'img/andrew-neel-109201.jpg',
             id: 1,
@@ -31,16 +29,15 @@ export function createStore() {
             // photographer: ,
             // photographerURL:
           },
-          */
-          '1': {
+          '3': {
             url: 'img/darkness-347018-unsplash.jpg',
-            id: 1,
+            id: 3,
             // photographer: ,
             // photographerURL:
           },
-          '2': {
+          '4': {
             url: 'img/igor-ovsyannykov-325822-unsplash.jpg',
-            id: 2,
+            id: 4,
             // photographer: ,
             // photographerURL:
           },
