@@ -12,7 +12,7 @@ export function createStore() {
       currentUser: {},
       settings: {},
       timer: {
-        currentSession: null,
+        currentSessionId: null,
       },
       currentBackground: 'img/darkness-347018-unsplash.jpg',
       backgrounds: {

@@ -89,6 +89,10 @@ function sessionUpdated(session) {
 function sessionCreated(session) {
   store.setState(state => ({
     ...state,
+    timer: {
+      ...state.timer,
+      currentSessionId: session.id,
+    },
     sessions: {
       ...state.sessions,
       byId: {

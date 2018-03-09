@@ -35,15 +35,19 @@ export function initEventsHandler() {
  * @param {number} todoId
  */
 export function startTimer({ todoId }) {
-  const now = new Date();
+  const now = Date.now();
   const session = {
     start: now,
-    end: new Date(now.getTime() + 25 * 60 * 1000),
+    end: new Date(now + 25 * 60 * 1000).getTime(),
     todoId,
     id: uuid(),
   };
   store.setState(state => ({
     ...state,
+    timer: {
+      ...state.timer,
+      currentSessionId: session.id,
+    },
     sessions: {
       byId: {
         ...state.sessions.byId,
