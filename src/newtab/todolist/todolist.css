@@ -3,7 +3,7 @@
 .todolist {
   display: flex;
   flex-flow: column;
-  width: 50%;
+  /*width: 50%;*/
 }
 
 .todolist ul {
@@ -11,7 +11,7 @@
   padding: 0;
 }
 .todolist li * {
-  float: left;
+  /*float: left;*/
 }
 .todolist li,
 h3 {
@@ -68,7 +68,7 @@ label[for='new-task'] {
   margin: 0 0 20px;
 }
 .todolist input#new-task {
-  float: left;
+  /*float: left;*/
   width: 318px;
 }
 .todolist p > button:hover {
@@ -82,9 +82,9 @@ label[for='new-task'] {
   border-bottom: 1px solid #eee;
 }
 .todolist li > input[type='checkbox'] {
-  margin: 0 10px;
+  /*margin: 0 10px;
   position: relative;
-  top: 15px;
+  top: 15px;*/
 }
 .todolist li > label {
   font-size: 18px;
