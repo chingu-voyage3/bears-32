@@ -2,19 +2,15 @@ import store from './store';
 import { startTimer, stopTimer } from './actions';
 
 let currentSession = null;
+let timerRunningTimeout = null;
 
 store.subscribe(state => {
   const { currentSessionId } = state.timer;
-  // don't do anything if the session didn't change
-  if (currentSession && currentSession.id === currentSessionId) {
-    return;
-  }
-  // check if currentSessionId is valid
-  if (!state.sessions.ids.includes(currentSessionId)) {
+  if (!currentSessionId || !state.sessions.ids.includes(currentSessionId)) {
+    currentSession = null;
     return;
   }
   currentSession = state.sessions.byId[currentSessionId];
-  runTimer();
 });
 
 // Connect to DOM
@@ -33,7 +29,7 @@ function handleStopTimer() {
   if (!currentSession) {
     return;
   }
-  stopTimer();
+  stopTimer(currentSession.id);
 }
 
 function handlePlayTimer() {
@@ -44,7 +40,9 @@ function handlePlayTimer() {
 }
 
 // Initialize page onload
-export function initTimer() {}
+export function initTimer() {
+  runTimer();
+}
 
 // Timer Helpers ------------------------------------------
 
