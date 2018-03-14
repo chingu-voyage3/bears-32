@@ -66,8 +66,8 @@ export function startTimer({ todoId }) {
 export function stopTimer({ sessionId }) {
   const session = store.getState().sessions.byId[sessionId];
   const updatedSession = {
-    end: new Date(),
     ...session,
+    end: Date.now(),
   };
   store.setState(state => ({
     ...state,
@@ -79,7 +79,7 @@ export function stopTimer({ sessionId }) {
       },
     },
   }));
-  emit(SESSION_UPDATED, { session });
+  emit(SESSION_UPDATED, { session: updatedSession });
 }
 
 /**
