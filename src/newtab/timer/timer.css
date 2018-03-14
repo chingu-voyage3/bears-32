@@ -10,6 +10,18 @@
   width: inherit;
 }
 
+.timer.finished .countdown {
+  display: none;
+}
+
+.timer .description {
+  display: none;
+}
+
+.timer.finished .description {
+  display: inline;
+}
+
 .timer .countdown {
   display: flex;
   flex-flow: row;

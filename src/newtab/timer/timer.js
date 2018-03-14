@@ -6,21 +6,28 @@ import { startTimer, stopTimer } from '../actions';
 let currentSession = null;
 let timerRunningTimeout = null;
 
+const timerWrapper = document.querySelector('.timer');
+// Connect to DOM
+const playBtn = timerWrapper.querySelector('.playBtn');
+// const pauseBtn = timerWrapper.querySelector('.pauseBtn');
+const resetBtn = timerWrapper.querySelector('.resetBtn');
+const minutesSpan = timerWrapper.querySelector('.minutes');
+const secondsSpan = timerWrapper.querySelector('.seconds');
+// const descriptionElement = timerWrapper.querySelector('.description');
+// const countdownElement = timerWrapper.querySelector('.countdown');
+
 store.subscribe(state => {
   const { currentSessionId } = state.timer;
   if (!currentSessionId || !state.sessions.ids.includes(currentSessionId)) {
     currentSession = null;
     return;
   }
-  currentSession = state.sessions.byId[currentSessionId];
-});
 
-// Connect to DOM
-const playBtn = document.querySelector('.playBtn');
-// const pauseBtn = document.querySelector('.pauseBtn');
-const resetBtn = document.querySelector('.resetBtn');
-const minutesSpan = document.querySelector('.minutes');
-const secondsSpan = document.querySelector('.seconds');
+  currentSession = state.sessions.byId[currentSessionId];
+  if (isSessionFinished(currentSession)) {
+    handleFinishedSession();
+  }
+});
 
 // Set event listeners on buttons
 playBtn.addEventListener('click', handlePlayTimer);
@@ -46,8 +53,6 @@ export function initTimer() {
   runTimer();
 }
 
-// Timer Helpers ------------------------------------------
-
 // Based on a future date, get remaining time (centiseconds)
 function getTimeRemaining(endtime) {
   // milliseconds
@@ -62,8 +67,6 @@ function getTimeRemaining(endtime) {
     seconds,
   };
 }
-
-// Timer Controls ------------------------------------------
 
 function runTimer() {
   timerRunningTimeout = setInterval(timerRefresh, 1000);
@@ -83,4 +86,12 @@ function runTimer() {
     minutesSpan.innerHTML = String(minutes).padStart(2, 0);
     secondsSpan.innerHTML = String(seconds).padStart(2, 0);
   }
+}
+
+function isSessionFinished({ start, end }) {
+  return end <= Date.now();
+}
+
+function handleFinishedSession(session) {
+  timerWrapper.classList.add('finished');
 }
