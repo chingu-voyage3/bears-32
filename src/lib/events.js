@@ -13,5 +13,5 @@ export const ADD_TODO = 'ui/ADD_TODO';
 export const DELETE_TODO = 'ui/DELETE_TODO';
 export const EDIT_TODO = 'ui/EDIT_TODO';
 export const CHANGE_BACKGROUND = 'ui/CHANGE_BACKGROUND';
-
+export const FINISH_SESSION = 'ui/FINISH_SESSION';
 export const GET_STORE = 'ui/GET_STORE';

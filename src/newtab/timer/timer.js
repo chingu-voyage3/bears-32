@@ -1,7 +1,7 @@
 import './timer.css';
 
 import store from '../store';
-import { startTimer, stopTimer } from '../actions';
+import { startTimer, stopTimer, finishSession } from '../actions';
 
 let currentSession = null;
 let timerRunningTimeout = null;
@@ -13,10 +13,27 @@ const playBtn = timerWrapper.querySelector('.playBtn');
 const resetBtn = timerWrapper.querySelector('.resetBtn');
 const minutesSpan = timerWrapper.querySelector('.minutes');
 const secondsSpan = timerWrapper.querySelector('.seconds');
-// const descriptionElement = timerWrapper.querySelector('.description');
+const descriptionInputElement = timerWrapper.querySelector(
+  '.description input'
+);
+const descriptionSubmitButton = timerWrapper.querySelector(
+  '.description button'
+);
 // const countdownElement = timerWrapper.querySelector('.countdown');
 
-store.subscribe(state => {
+store.subscribe(handleStateChange);
+
+// Set event listeners on buttons
+playBtn.addEventListener('click', handlePlayTimer);
+// pauseBtn.addEventListener('click', pauseTimer);
+resetBtn.addEventListener('click', handleStopTimer);
+descriptionSubmitButton.addEventListener('click', handleSubmitDescription);
+
+export function initTimer() {
+  runTimer();
+}
+
+function handleStateChange(state) {
   const { currentSessionId } = state.timer;
   if (!currentSessionId || !state.sessions.ids.includes(currentSessionId)) {
     currentSession = null;
@@ -27,12 +44,7 @@ store.subscribe(state => {
   if (isSessionFinished(currentSession)) {
     handleFinishedSession();
   }
-});
-
-// Set event listeners on buttons
-playBtn.addEventListener('click', handlePlayTimer);
-// pauseBtn.addEventListener('click', pauseTimer);
-resetBtn.addEventListener('click', handleStopTimer);
+}
 
 function handleStopTimer() {
   if (!currentSession) {
@@ -46,11 +58,6 @@ function handlePlayTimer() {
     return;
   }
   startTimer();
-}
-
-// Initialize page onload
-export function initTimer() {
-  runTimer();
 }
 
 // Based on a future date, get remaining time (centiseconds)
@@ -94,4 +101,12 @@ function isSessionFinished({ start, end }) {
 
 function handleFinishedSession(session) {
   timerWrapper.classList.add('finished');
+}
+
+function handleSubmitDescription() {
+  if (!currentSession) {
+    return;
+  }
+  const description = descriptionInputElement.value;
+  finishSession(currentSession.id, description);
 }

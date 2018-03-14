@@ -3,6 +3,7 @@ import { emit } from '../lib/events-emitter';
 import {
   START_TIMER,
   STOP_TIMER,
+  FINISH_SESSION,
   ADD_TODO,
   DELETE_TODO,
   EDIT_TODO,
@@ -23,6 +24,15 @@ export function startTimer(todoId) {
  */
 export function stopTimer(sessionId) {
   emit(STOP_TIMER, { sessionId });
+}
+
+/**
+ * Submits a description for a session as a finishing step
+ * @param {number} sessionId
+ * @param {string} description
+ */
+export function finishSession(sessionId, description) {
+  emit(FINISH_SESSION, { sessionId, description });
 }
 
 /**
