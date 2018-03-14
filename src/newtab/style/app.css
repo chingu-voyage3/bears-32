@@ -30,38 +30,3 @@ h1 {
   background: rgba(255, 255, 255, 0.95);
   margin: 20px;
 }
-
-/* Timer Styling */
-
-.timer {
-  display: flex;
-  flex-flow: column;
-  font-family: sans-serif;
-  color: #fff;
-  font-weight: 100;
-  text-align: center;
-  font-size: 60px;
-  margin: 20px 0;
-  width: inherit;
-}
-
-.timer .countdown {
-  display: flex;
-  flex-flow: row;
-}
-
-.timer .controls {
-  display: flex;
-  flex-flow: row;
-}
-
-.timer div > span {
-  padding: 20px;
-  border-radius: 30px;
-  background: rgba(0, 0, 0, 0.7);
-  display: inline-block;
-}
-
-.centiseconds {
-  color: #777;
-}

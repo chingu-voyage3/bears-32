@@ -1,5 +1,7 @@
-import store from './store';
-import { startTimer, stopTimer } from './actions';
+import './timer.css';
+
+import store from '../store';
+import { startTimer, stopTimer } from '../actions';
 
 let currentSession = null;
 let timerRunningTimeout = null;
