@@ -73,7 +73,7 @@ function todoCreated(todo) {
   }));
 }
 
-function sessionUpdated(session) {
+function sessionUpdated({ session }) {
   store.setState(state => ({
     ...state,
     sessions: {
@@ -86,7 +86,7 @@ function sessionUpdated(session) {
   }));
 }
 
-function sessionCreated(session) {
+function sessionCreated({ session }) {
   store.setState(state => ({
     ...state,
     timer: {
