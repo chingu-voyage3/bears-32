@@ -1,6 +1,22 @@
 import store from './store';
 import { startTimer, stopTimer } from './actions';
 
+let currentSession = null;
+
+store.subscribe(state => {
+  const { currentSessionId } = state.timer;
+  // don't do anything if the session didn't change
+  if (currentSession && currentSession.id === currentSessionId) {
+    return;
+  }
+  // check if currentSessionId is valid
+  if (!state.sessions.ids.includes(currentSessionId)) {
+    return;
+  }
+  currentSession = state.sessions.byId[currentSessionId];
+  runTimer();
+});
+
 // Connect to DOM
 const playBtn = document.querySelector('.playBtn');
 // const pauseBtn = document.querySelector('.pauseBtn');
@@ -8,32 +24,27 @@ const resetBtn = document.querySelector('.resetBtn');
 const minutesSpan = document.querySelector('.minutes');
 const secondsSpan = document.querySelector('.seconds');
 
-let currentSession = null;
-let timerRunningTimeout = null;
+// Set event listeners on buttons
+playBtn.addEventListener('click', handlePlayTimer);
+// pauseBtn.addEventListener('click', pauseTimer);
+resetBtn.addEventListener('click', handleStopTimer);
 
-store.subscribe(state => {
-  const { currentSessionId } = state.timer;
-
-  if (!currentSessionId) {
-    // hide the reset button
-  }
-  // check if currentSessionId is valid
-  if (!state.sessions.ids.includes(currentSessionId)) {
+function handleStopTimer() {
+  if (!currentSession) {
     return;
   }
+  stopTimer();
+}
 
-  currentSession = state.sessions.byId[currentSessionId];
-});
-
-// Set event listeners on buttons
-playBtn.addEventListener('click', () => startTimer());
-// pauseBtn.addEventListener('click', pauseTimer);
-resetBtn.addEventListener('click', () => stopTimer(currentSession.id));
+function handlePlayTimer() {
+  if (currentSession) {
+    return;
+  }
+  startTimer();
+}
 
 // Initialize page onload
-export function initTimer() {
-  runTimer();
-}
+export function initTimer() {}
 
 // Timer Helpers ------------------------------------------
 
