@@ -1,5 +1,6 @@
 export const SESSION_CREATED = 'background/SESSION_CREATED';
 export const SESSION_UPDATED = 'background/SESSION_UPDATED';
+export const SESSION_FINISHED = 'background/SESSION_FINISHED';
 
 export const TODO_CREATED = 'background/TODO_CREATED';
 export const TODO_UPDATED = 'background/TODO_UPDATED';

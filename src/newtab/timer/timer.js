@@ -36,7 +36,8 @@ export function initTimer() {
 function handleStateChange(state) {
   const { currentSessionId } = state.timer;
   if (!currentSessionId || !state.sessions.ids.includes(currentSessionId)) {
-    currentSession = null;
+    resetTimer();
+
     return;
   }
 
@@ -44,6 +45,11 @@ function handleStateChange(state) {
   if (isSessionFinished(currentSession)) {
     handleFinishedSession();
   }
+}
+
+function resetTimer() {
+  currentSession = null;
+  timerWrapper.classList.remove('finished');
 }
 
 function handleStopTimer() {
