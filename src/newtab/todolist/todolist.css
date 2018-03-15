@@ -1,43 +1,51 @@
 /* To Do Styling */
 
 .todolist {
+  background: #eee;
   display: flex;
   flex-flow: column;
-  /*width: 50%;*/
+  padding: 1rem 1rem 3rem;
+}
+
+.todolist .new-task-container {
+}
+
+.todolist .new-task-container h3 {
+  margin-top: 0;
 }
 
 .todolist ul {
   margin: 0;
   padding: 0;
 }
-.todolist li * {
-  /*float: left;*/
-}
-.todolist li,
-h3 {
+
+.todolist li {
   clear: both;
   list-style: none;
 }
+
 .todolist input,
 button {
   outline: none;
 }
+
 .todolist button {
   background: none;
   border: 0px;
   color: #888;
   font-size: 15px;
-  width: 60px;
-  margin: 10px 0 0;
+  /*width: 60px;*/
+  /*margin: 10px 0 0;*/
   font-family: Lato, sans-serif;
   cursor: pointer;
 }
+
 .todolist button:hover {
   color: #333;
 }
+
 /* Heading */
-.todolist h3,
-label[for='new-task'] {
+.todolist label[for='new-task'] {
   color: #333;
   font-weight: 700;
   font-size: 15px;
@@ -69,7 +77,7 @@ label[for='new-task'] {
 }
 .todolist input#new-task {
   /*float: left;*/
-  width: 318px;
+  /*width: 318px;*/
 }
 .todolist p > button:hover {
   color: #0fc57c;
@@ -78,8 +86,8 @@ label[for='new-task'] {
 /* Task list */
 .todolist li {
   overflow: hidden;
-  padding: 20px 0;
-  border-bottom: 1px solid #eee;
+  padding: 1rem 0;
+  border-bottom: 1px solid #ddd;
 }
 .todolist li > input[type='checkbox'] {
   /*margin: 0 10px;
@@ -89,11 +97,11 @@ label[for='new-task'] {
 .todolist li > label {
   font-size: 18px;
   line-height: 40px;
-  width: 237px;
-  padding: 0 0 0 11px;
+  /*width: 237px;*/
+  /*padding: 0 0 0 11px;*/
 }
 .todolist li > input[type='text'] {
-  width: 226px;
+  /*width: 226px;*/
 }
 .todolist li > .delete:hover {
   color: #cf2323;
@@ -111,11 +119,25 @@ label[for='new-task'] {
 }
 
 .todolist ul li.editMode input[type='text'] {
-  display: block;
+  display: inline-block;
 }
 
 .todolist ul li.editMode label {
   display: none;
+}
+
+.task {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
+
+.task .task-actions {
+}
+
+.task button {
+  padding: 0;
+  margin-left: 0.5rem;
 }
 
 .task .done {

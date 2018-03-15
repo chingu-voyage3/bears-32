@@ -33,9 +33,10 @@ h1 span {
 }
 
 .content {
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.95);
   display: flex;
   flex-flow: row wrap;
-  flex: 1;
-  background: rgba(255, 255, 255, 0.95);
-  margin: 20px;
+  flex: 1 1 auto;
+  margin: 0;
 }
