@@ -14,7 +14,7 @@ export function createStore() {
       timer: {
         currentSession: null,
       },
-      currentBackground: 'img/kelly-sikkema-455242.jpg',
+      currentBackground: 'img/darkness-347018-unsplash.jpg',
       backgrounds: {
         byId: {
           '1': {
@@ -29,8 +29,50 @@ export function createStore() {
             // photographer: ,
             // photographerURL:
           },
+          '3': {
+            url: 'img/darkness-347018-unsplash.jpg',
+            id: 3,
+            // photographer: ,
+            // photographerURL:
+          },
+          '4': {
+            url: 'img/igor-ovsyannykov-325822-unsplash.jpg',
+            id: 4,
+            // photographer: ,
+            // photographerURL:
+          },
+          '5': {
+            url: 'img/john-jason-428710-unsplash.jpg',
+            id: 5,
+            // photographer: ,
+            // photographerURL:
+          },
+          '6': {
+            url: 'img/mohammad-alizade-368770-unsplash.jpg',
+            id: 6,
+            // photographer: ,
+            // photographerURL:
+          },
+          '7': {
+            url: 'img/redd-angelo-344552-unsplash.jpg',
+            id: 7,
+            // photographer: ,
+            // photographerURL:
+          },
+          '8': {
+            url: 'img/simon-migaj-494807-unsplash.jpg',
+            id: 8,
+            // photographer: ,
+            // photographerURL:
+          },
+          '9': {
+            url: 'img/vincent-guth-358793-unsplash.jpg',
+            id: 9,
+            // photographer: ,
+            // photographerURL:
+          },
         },
-        ids: [1, 2],
+        ids: [1, 2, 3, 4, 5, 6, 7, 8, 9],
       },
     },
     subscribers: [],

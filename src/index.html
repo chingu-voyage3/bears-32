@@ -3,6 +3,7 @@
 
 <head>
   <title>PoKa</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"
     rel="stylesheet">
@@ -10,7 +11,7 @@
 
 <body>
   <div class="background">
-    <h1>PO&middot;KA</h1>
+    <h1>PO&middot;KA<br />Pomodoro meets Kanban</h1>
     <div class="content">
 
       <!-- Pomodoro Timer -->
@@ -38,26 +39,21 @@
       <!-- Timer Ends -->
       <!-- ToDo List -->
       <div class="todolist">
-        <h2>To-do List</h2>
-        <h3>ADD TASK</h3>
-        <form>
+        <h2>What are you working on?</h2>
+        <h3>New Task</h3>
+        <div>
           <label>
             <input id="new-task-input" type="text">
           </label>
           <button id="add-task-button" type="button">
             Add
           </button>
-        </form>
-        <h3>TODO</h3>
+        </div>
+        <h3>Tasks To Do</h3>
         <ul id="todolist-container">
-          <li class="task">
-            <input class="checkbox" type="checkbox" checked>
-            <label>Shopping</label>
-            <input type="text" value="Shopping">
-            <button class="edit">Edit</button>
-            <button class="delete">Delete</button>
-          </li>
+
         </ul>
+        <div class="empty-todolist">No todos</div>
       </div>
       <!-- ToDoList Ends -->
     </div>

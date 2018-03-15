@@ -4,6 +4,7 @@ import {
   SESSION_UPDATED,
   TODO_CREATED,
   TODO_UPDATED,
+  TODO_DELETED,
   BACKGROUND_CHANGED,
 } from '../lib/events';
 import store from './store';
@@ -14,6 +15,7 @@ export function initEventsHandler() {
   subscribe(SESSION_UPDATED, sessionUpdated);
   subscribe(TODO_CREATED, todoCreated);
   subscribe(TODO_UPDATED, todoUpdated);
+  subscribe(TODO_DELETED, todoDeleted);
   subscribe(BACKGROUND_CHANGED, backgroundChanged);
 }
 function backgroundChanged({ url }) {
@@ -24,15 +26,38 @@ function backgroundChanged({ url }) {
 }
 
 function todoUpdated(todo) {
+  store.setState(state => {
+    console.log(state.todos.byId[todo.id], todo);
+    return {
+      ...state,
+      todos: {
+        ...state.todos,
+        byId: {
+          ...state.todos.byId,
+          [todo.id]: { ...state.todos.byId[todo.id], ...todo },
+        },
+      },
+    };
+  });
+}
+
+function todoDeleted(id) {
   store.setState(state => ({
     ...state,
-    sessions: {
-      byId: {
-        ...state.sessions.byId,
-        [todo.id]: todo,
-      },
+    todos: {
+      byId: removeTodoFromById(state.todos.byId, id),
+      ids: state.todos.ids.filter(todoId => todoId !== id),
     },
   }));
+}
+
+function removeTodoFromById(todoById, id) {
+  const keys = Object.keys(todoById).filter(key => key !== id);
+  const newState = keys.reduce((o, key) => {
+    o[key] = todoById[key];
+    return o;
+  }, {});
+  return newState;
 }
 
 function todoCreated(todo) {
