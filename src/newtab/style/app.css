@@ -1,12 +1,21 @@
 body,
 html {
   margin: 0;
+  font-size: 16px;
 }
 
 h1 {
-  margin: 100px;
-  background: #333;
+  background: rgba(10, 10, 10, 0.5);
   color: #eee;
+  margin: 3rem 3rem 1rem;
+  padding: 1rem;
+  text-align: center;
+}
+
+h1 span {
+  color: #999;
+  font-size: 1rem;
+  font-weight: normal;
 }
 
 .background {
@@ -16,7 +25,7 @@ h1 {
   background-color: #000;
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center bottom;
+  background-position: center top;
   background-attachment: fixed;
   width: 100vw;
   min-height: 100vh;
@@ -24,44 +33,10 @@ h1 {
 }
 
 .content {
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.95);
   display: flex;
   flex-flow: row wrap;
-  flex: 1;
-  background: rgba(255, 255, 255, 0.95);
-  margin: 20px;
-}
-
-/* Timer Styling */
-
-.timer {
-  display: flex;
-  flex-flow: column;
-  font-family: sans-serif;
-  color: #fff;
-  font-weight: 100;
-  text-align: center;
-  font-size: 60px;
-  margin: 20px 0;
-  width: inherit;
-}
-
-.timer .countdown {
-  display: flex;
-  flex-flow: row;
-}
-
-.timer .controls {
-  display: flex;
-  flex-flow: row;
-}
-
-.timer div > span {
-  padding: 20px;
-  border-radius: 30px;
-  background: rgba(0, 0, 0, 0.7);
-  display: inline-block;
-}
-
-.centiseconds {
-  color: #777;
+  flex: 1 1 auto;
+  margin: 0;
 }

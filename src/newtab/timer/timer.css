@@ -1,0 +1,35 @@
+/* Timer Styling */
+
+.timer {
+  display: flex;
+  flex-flow: column;
+  font-family: sans-serif;
+  color: #fff;
+  font-weight: 100;
+  text-align: center;
+  font-size: 3rem;
+  margin: 1rem;
+  width: inherit;
+}
+
+.timer .countdown {
+  display: flex;
+  flex-flow: row;
+}
+
+.timer .controls {
+  display: flex;
+  flex-flow: row;
+  margin-top: 1rem;
+}
+
+.timer div > span {
+  padding: 20px;
+  border-radius: 30px;
+  background: rgba(0, 0, 0, 0.7);
+  display: inline-block;
+}
+
+.centiseconds {
+  color: #777;
+}

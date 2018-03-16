@@ -64,12 +64,16 @@ function updateTodoList(todos) {
 function createNewTaskElement({ title, id, completed }) {
   const element = createHtmlFromText(`
     <li class="task">
-      <input class="checkbox" type="checkbox" ${completed ? 'checked' : ''}>
-      <label class="label">${title}</label>
-      <input class="title-input" type="text" value="${title}">
-      <button class="edit">Edit</button>
-      <button class="done">Done</button>
-      <button class="delete">Delete</button>
+      <div class="task-title">
+        <input class="checkbox" type="checkbox" ${completed ? 'checked' : ''}>
+        <label class="label">${title}</label>
+        <input class="title-input" type="text" value="${title}">
+      </div>
+      <div class="task-actions">
+        <button class="edit">Edit</button>
+        <button class="done">Done</button>
+        <button class="delete">Delete</button>
+      </div>
     </li>
   `);
 

@@ -1,5 +1,7 @@
 'use strict';
 
+import './timer.css';
+
 // Initialize varz
 var pomoStandardTime = 25 * 60 * 1000;
 var testTime = 3000;
