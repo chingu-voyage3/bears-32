@@ -25,6 +25,14 @@
   display: inline-block;
 }
 
-.centiseconds {
-  color: #777;
+.timer.finished .countdown {
+  display: none;
+}
+
+.timer .description {
+  display: none;
+}
+
+.timer.finished .description {
+  display: inline;
 }
