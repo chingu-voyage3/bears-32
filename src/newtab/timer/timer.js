@@ -2,7 +2,7 @@ import './timer.css';
 
 import store from '../store';
 import { startTimer, stopTimer, finishSession } from '../actions';
-
+import format from 'date-fns/format';
 let currentSession = null;
 let timerRunningTimeout = null;
 
@@ -19,7 +19,7 @@ const descriptionInputElement = timerWrapper.querySelector(
 const descriptionSubmitButton = timerWrapper.querySelector(
   '.description button'
 );
-// const countdownElement = timerWrapper.querySelector('.countdown');
+const sessionsListElement = timerWrapper.querySelector('.pomos-list');
 
 store.subscribe(handleStateChange);
 
@@ -34,6 +34,33 @@ export function initTimer() {
 }
 
 function handleStateChange(state) {
+  handleSessionStateChange(state);
+  handleSessionsListChange(state);
+}
+
+function handleSessionsListChange(state) {
+  const sessions = state.sessions.ids.map(id => state.sessions.byId[id]);
+  sessionsListElement.innerHTML = sessions
+    .filter(s => isSessionFinished(s))
+    .slice(10)
+    .map(s => createSessionElementHtml(s))
+    .join('');
+}
+
+function createSessionElementHtml(session) {
+  return `
+    <li class="session">
+      <div class="session__start">${format(
+        session.start,
+        'YYYY-MM-DD HH:mm'
+      )}</div>
+      <div class="session__end">${format(session.end, 'YYYY-MM-DD HH:mm')}</div>
+      <div class="session__description>${session.description}</div>
+    </li>
+  `;
+}
+
+function handleSessionStateChange(state) {
   const { currentSessionId } = state.timer;
   if (!currentSessionId || !state.sessions.ids.includes(currentSessionId)) {
     resetTimer();
