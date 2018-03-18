@@ -2,6 +2,7 @@ import { subscribe, initEventsManager } from '../lib/events-emitter';
 import {
   SESSION_CREATED,
   SESSION_UPDATED,
+  SESSION_FINISHED,
   TODO_CREATED,
   TODO_UPDATED,
   TODO_DELETED,
@@ -17,7 +18,32 @@ export function initEventsHandler() {
   subscribe(TODO_UPDATED, todoUpdated);
   subscribe(TODO_DELETED, todoDeleted);
   subscribe(BACKGROUND_CHANGED, backgroundChanged);
+  subscribe(SESSION_FINISHED, sessionFinished);
 }
+
+function sessionFinished({ session }) {
+  const state = store.getState();
+  const { currentSessionId } = state.timer;
+  console.log(session, currentSessionId);
+  if (currentSessionId !== session.id) {
+    return;
+  }
+  store.setState(state => ({
+    ...state,
+    timer: {
+      ...state.timer,
+      currentSessionId: null,
+    },
+    sessions: {
+      ...state.sessions,
+      byId: {
+        ...state.sessions.byId,
+        [session.id]: session,
+      },
+    },
+  }));
+}
+
 function backgroundChanged({ url }) {
   store.setState(state => ({
     ...state,
@@ -73,7 +99,7 @@ function todoCreated(todo) {
   }));
 }
 
-function sessionUpdated(session) {
+function sessionUpdated({ session }) {
   store.setState(state => ({
     ...state,
     sessions: {
@@ -86,9 +112,13 @@ function sessionUpdated(session) {
   }));
 }
 
-function sessionCreated(session) {
+function sessionCreated({ session }) {
   store.setState(state => ({
     ...state,
+    timer: {
+      ...state.timer,
+      currentSessionId: session.id,
+    },
     sessions: {
       ...state.sessions,
       byId: {

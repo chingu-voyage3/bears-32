@@ -5,36 +5,41 @@
   <title>PoKa</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"
-    rel="stylesheet">
 </head>
 
 <body>
   <div class="background">
-    <h1>PO&middot;KA<br /><span>Pomodoro meets Kanban</span></h1>
+    <h1>PO&middot;KA
+      <br />
+      <span>Pomodoro meets Kanban</span>
+    </h1>
     <div class="content">
 
       <!-- Pomodoro Timer -->
       <div class="timer">
         <div class="countdown">
           <div>
-            <span class="minutes"></span>
+            <span class="minutes">00</span>
           </div>
           <div>
-            <span class="seconds"></span>
+            <span class="seconds">00</span>
           </div>
-          <div>
-            <span class="centiseconds"></span>
-          </div>
+        </div>
+        <div class="description">
+          <input />
+          <button type="button">Submit</button>
         </div>
         <div class="controls">
           <button class="playBtn">
-            <i class="fa fa-play-circle"></i> PLAY</button>
-          <button class="pauseBtn">PAUSE</button>
-          <button class="resetBtn">RESET</button>
+            <i class="fa fa-play-circle"></i>PLAY</button>
+          <button class="resetBtn">STOP</button>
           <button class="setRandomBg">Random Background</button>
 
         </div>
+        <ul class="pomos-list">
+
+        </ul>
+
       </div>
       <!-- Timer Ends -->
       <!-- ToDo List -->

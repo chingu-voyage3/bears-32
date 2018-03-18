@@ -16,6 +16,8 @@ import {
   GET_STORE,
   TODO_UPDATED,
   TODO_DELETED,
+  FINISH_SESSION,
+  SESSION_FINISHED,
 } from '../lib/events';
 
 export function initEventsHandler() {
@@ -23,8 +25,10 @@ export function initEventsHandler() {
   subscribe(ADD_TODO, addTodo);
   subscribe(EDIT_TODO, editTodo);
   subscribe(DELETE_TODO, deleteTodo);
+
   subscribe(START_TIMER, startTimer);
   subscribe(STOP_TIMER, stopTimer);
+  subscribe(FINISH_SESSION, finishSession);
   subscribe(CHANGE_BACKGROUND, changeBackground);
 
   subscribe(GET_STORE, (_, sendResponse) => sendResponse(store.getState()));
@@ -35,15 +39,19 @@ export function initEventsHandler() {
  * @param {number} todoId
  */
 export function startTimer({ todoId }) {
-  const now = new Date();
+  const now = Date.now();
   const session = {
     start: now,
-    end: new Date(now.getTime() + 25 * 60 * 1000),
+    end: new Date(now + 25 * 60 * 1000).getTime(),
     todoId,
     id: uuid(),
   };
   store.setState(state => ({
     ...state,
+    timer: {
+      ...state.timer,
+      currentSessionId: session.id,
+    },
     sessions: {
       byId: {
         ...state.sessions.byId,
@@ -62,8 +70,8 @@ export function startTimer({ todoId }) {
 export function stopTimer({ sessionId }) {
   const session = store.getState().sessions.byId[sessionId];
   const updatedSession = {
-    end: new Date(),
     ...session,
+    end: Date.now(),
   };
   store.setState(state => ({
     ...state,
@@ -75,7 +83,7 @@ export function stopTimer({ sessionId }) {
       },
     },
   }));
-  emit(SESSION_UPDATED, { session });
+  emit(SESSION_UPDATED, { session: updatedSession });
 }
 
 /**
@@ -121,6 +129,29 @@ function removeTodoFromById(todoById, id) {
     return o;
   }, {});
   return newState;
+}
+
+function finishSession({ sessionId, description }) {
+  const session = store.getState().sessions.byId[sessionId];
+  const updatedSession = {
+    ...session,
+    description,
+  };
+  store.setState(state => ({
+    ...state,
+    timer: {
+      ...state.timer,
+      currentSessionId: null,
+    },
+    sessions: {
+      ...state.sessions,
+      byId: {
+        ...state.sessions.byId,
+        [sessionId]: updatedSession,
+      },
+    },
+  }));
+  emit(SESSION_FINISHED, { session: updatedSession });
 }
 
 export function editTodo(todo) {
