@@ -1,7 +1,6 @@
 .timer {
   display: flex;
   flex-flow: column;
-  font-family: sans-serif;
   color: #fff;
   font-weight: 100;
   text-align: center;
@@ -13,12 +12,25 @@
 .timer .countdown {
   display: flex;
   flex-flow: row;
+  margin-top: 1rem;
+  justify-content: center;
+}
+
+.timer.inactive .countdown {
+  display: none;
 }
 
 .timer .controls {
   display: flex;
   flex-flow: row;
-  margin-top: 1rem;
+  justify-content: center;
+}
+
+.timer .controls button {
+  background: none;
+  border: none;
+  font-size: 1em;
+  cursor: pointer;
 }
 
 .timer div > span {
@@ -32,7 +44,8 @@
   display: none;
 }
 
-.timer.inactive .resetBtn {
+.timer.inactive .resetBtn,
+.timer.finished .resetBtn {
   display: none;
 }
 
@@ -46,4 +59,15 @@
 
 .timer.finished .description {
   display: inline;
+}
+
+ul.pomos-list {
+  list-style: none;
+  color: black;
+  font-size: 0.5em;
+}
+
+.pomos-list .session {
+  display: flex;
+  justify-content: space-between;
 }
