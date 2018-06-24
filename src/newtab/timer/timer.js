@@ -55,7 +55,7 @@ function createSessionElementHtml(session) {
         'YYYY-MM-DD HH:mm'
       )}</div>
       <div class="session__end">${format(session.end, 'YYYY-MM-DD HH:mm')}</div>
-      <div class="session__description>${session.description}</div>
+      <div class="session__description">${session.description || ''}</div>
     </li>
   `;
 }
