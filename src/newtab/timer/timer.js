@@ -69,6 +69,7 @@ function handleSessionStateChange(state) {
   }
 
   currentSession = state.sessions.byId[currentSessionId];
+  timerWrapper.classList.add('active');
   if (isSessionFinished(currentSession)) {
     handleFinishedSession();
   }
@@ -77,6 +78,7 @@ function handleSessionStateChange(state) {
 function resetTimer() {
   currentSession = null;
   timerWrapper.classList.remove('finished');
+  timerWrapper.classList.add('inactive');
 }
 
 function handleStopTimer() {
@@ -90,6 +92,8 @@ function handlePlayTimer() {
   if (currentSession) {
     return;
   }
+  timerWrapper.classList.add('active');
+  timerWrapper.classList.remove('inactive');
   startTimer();
 }
 

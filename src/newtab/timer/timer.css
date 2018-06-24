@@ -32,6 +32,14 @@
   display: none;
 }
 
+.timer.inactive .resetBtn {
+  display: none;
+}
+
+.timer.active .playBtn {
+  display: none;
+}
+
 .timer .description {
   display: none;
 }
