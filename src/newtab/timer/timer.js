@@ -138,6 +138,8 @@ function isSessionFinished({ start, end }) {
 
 function handleFinishedSession(session) {
   timerWrapper.classList.add('finished');
+  timerWrapper.classList.remove('active');
+  timerWrapper.classList.remove('inactive');
 }
 
 function handleSubmitDescription() {
@@ -145,5 +147,6 @@ function handleSubmitDescription() {
     return;
   }
   const description = descriptionInputElement.value;
+  descriptionInputElement.value = '';
   finishSession(currentSession.id, description);
 }
