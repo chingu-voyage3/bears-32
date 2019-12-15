@@ -27,7 +27,7 @@
     "babel-loader": "^8.0.0-beta.0",
     "chrome-dev-webpack-plugin": "^0.3.3",
     "css-loader": "^0.28.9",
-    "eslint": "^4.13.1",
+    "eslint": "^4.18.2",
     "eslint-config-prettier": "^2.9.0",
     "eslint-config-standard": "^11.0.0-beta.0",
     "eslint-plugin-import": "^2.8.0",
