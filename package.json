@@ -1,8 +1,7 @@
 {
   "name": "poka",
   "version": "0.0.1",
-  "description":
-    "Pomodoro meets Kanban, for individual and team task management",
+  "description": "Pomodoro meets Kanban, for individual and team task management",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -22,35 +21,38 @@
   },
   "homepage": "https://github.com/chingu-voyage3/bears-32#readme",
   "devDependencies": {
-    "@babel/core": "^7.0.0-beta.36",
-    "@babel/preset-stage-0": "^7.0.0-beta.36",
-    "babel-loader": "^8.0.0-beta.0",
+    "@babel/core": "^7.7.7",
+    "@babel/preset-stage-0": "^7.0.0",
+    "babel-loader": "^8.0.6",
     "chrome-dev-webpack-plugin": "^0.3.3",
-    "css-loader": "^0.28.9",
-    "eslint": "^4.13.1",
-    "eslint-config-prettier": "^2.9.0",
-    "eslint-config-standard": "^11.0.0-beta.0",
-    "eslint-plugin-import": "^2.8.0",
-    "eslint-plugin-node": "^5.2.1",
-    "eslint-plugin-promise": "^3.6.0",
-    "eslint-plugin-standard": "^3.0.1",
-    "html-webpack-plugin": "^2.30.1",
-    "husky": "^0.14.3",
-    "lint-staged": "^6.0.0",
-    "prettier": "^1.9.2",
-    "style-loader": "^0.20.2",
-    "webpack": "^3.10.0",
-    "webpack-chrome-extension-reloader": "^0.6.5"
+    "css-loader": "^3.4.0",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.7.0",
+    "eslint-config-standard": "^14.1.0",
+    "eslint-plugin-import": "^2.19.1",
+    "eslint-plugin-node": "^10.0.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "html-webpack-plugin": "^3.2.0",
+    "husky": "^3.1.0",
+    "lint-staged": "^9.5.0",
+    "prettier": "^1.19.1",
+    "style-loader": "^1.1.1",
+    "webpack": "^4.41.4",
+    "webpack-chrome-extension-reloader": "^1.3.0"
   },
   "lint-staged": {
-    "*.{js,json,css}": ["prettier --write", "git add"]
+    "*.{js,json,css}": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "dependencies": {
-    "date-fns": "^1.29.0",
-    "jquery": "^3.2.1",
+    "date-fns": "^2.8.1",
+    "jquery": "^3.4.1",
     "jquery-ui": "^1.12.1",
     "jquery-ui-bundle": "^1.12.1",
     "jquery-ui-dist": "^1.12.1",
-    "uuid": "^3.2.1"
+    "uuid": "^3.3.3"
   }
 }

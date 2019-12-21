@@ -6,7 +6,7 @@ import store from './store';
 // const unsplashQuery = "https://api.unsplash.com/photos/random?collections=1490722" + "&client_id=" + config.unsplashAppId + "&orientation=landscape"
 
 const backgroundImage = document.querySelector('.background');
-const randomBackgroundButton = document.querySelector('.setRandomBg');
+// const randomBackgroundButton = document.querySelector('.setRandomBg');
 
 // // Build album for bg images, with img link and photographer credits
 
@@ -14,9 +14,9 @@ const randomBackgroundButton = document.querySelector('.setRandomBg');
 
 // Insert background image into DOM
 
-randomBackgroundButton.addEventListener('click', () => {
-  setBackground(getRandomElement(store.getState().backgrounds.ids));
-});
+// randomBackgroundButton.addEventListener('click', () => {
+//   setBackground(getRandomElement(store.getState().backgrounds.ids));
+// });
 
 store.subscribe(state => setBackgroundImage(state.currentBackground));
 // run the function also on tab init
