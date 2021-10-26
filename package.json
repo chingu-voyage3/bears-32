@@ -50,7 +50,7 @@
   "dependencies": {
     "date-fns": "^2.8.1",
     "jquery": "^3.4.1",
-    "jquery-ui": "^1.12.1",
+    "jquery-ui": "^1.13.0",
     "jquery-ui-bundle": "^1.12.1",
     "jquery-ui-dist": "^1.12.1",
     "uuid": "^3.3.3"
